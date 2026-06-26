@@ -166,6 +166,9 @@ ul{list-style:none}
   .hc-slide--active .hc-bg{transform:none}
 }
 
+
+/* TIMELINE — logos que necesitan escala extra */
+.timeline-logo--lg{height:34px!important;max-width:110px;object-fit:contain}
 /* HISTORIA / METRICS */
 .historia{background:var(--bla);padding:88px 0;position:relative;overflow:hidden}
 .historia::before{content:'';position:absolute;top:-120px;right:-120px;width:480px;height:480px;border-radius:50%;background:rgba(101,187,204,.04);pointer-events:none}
@@ -389,14 +392,15 @@ ul{list-style:none}
 <nav class="navbar">
   <div class="wrap">
     <a href="#inicio" class="nav-logo">
-      <div class="nav-logo-mark"><svg viewBox="0 0 22 22" fill="none"><path d="M11 2L3 6v6c0 4.75 3.46 9.2 8 10.5C16.54 21.2 20 16.75 20 12V6L11 2z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/><path d="M7.5 11l2.5 2.5 4.5-4.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      <span class="nav-logo-text"><span class="constru">Constru</span><span class="brand-mega">Mega</span></span>
+      <img src="https://raw.githubusercontent.com/jonasconstrumega-dot/doctor_web/main/img.github/logo-construmegabrj.jpg" alt="ConstruMega — Importadora Mayorista Bolivia" style="max-height:45px;width:auto;display:block;object-fit:contain"/>
     </a>
     <nav><ul class="nav-menu">
       <li><a href="#inicio" class="nav-link active">Inicio</a></li>
       <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
       <li><a href="#categorias" class="nav-link">Categorías</a></li>
-      <li><a href="tienda.html" class="nav-link" target="_blank" rel="noopener">Productos / Tienda Virtual</a></li>
+      <li><a href="tienda.html" class="nav-link" target="_blank" rel="noopener">Productos/Tienda</a></li>
+      <li><a href="calculadoras.html" class="nav-link">Simuladores</a></li>
+      <li><a href="faq.html" class="nav-link">FAQ</a></li> 
     </ul></nav>
     <div class="nav-actions">
       <a href="tienda.html?seccion=garantia" class="nbtn nbtn-ol" target="_blank" rel="noopener">Registrar Garantía</a>
@@ -564,15 +568,16 @@ ul{list-style:none}
       </div>
       <div class="brands-logo-grid">
         <a href="tienda.html?marca=orbis" class="brand-card" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/jonasconstrumega-dot/doctor_web/main/img.github/orbislogo.png" alt="Orbis"/></a>
-        <a href="tienda.html?marca=volcan" class="brand-card" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/jonasconstrumega-dot/doctor_web/main/img.github/volcanlogo.png" alt="Volcán"/></a>
-        <a href="tienda.html?marca=coppens" class="brand-card" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/jonasconstrumega-dot/doctor_web/main/img.github/coppenslogo.png" alt="Coppens"/></a>
+        <a href="tienda.html?marca=volcan" class="brand-card" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/jonasconstrumega-dot/doctor_web/main/img.github/volcan-logo22.png" alt="Volcán"/></a>
+        <a href="tienda.html?marca=coppens" class="brand-card" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/jonasconstrumega-dot/doctor_web/main/img.github/coppens-logo22.png" alt="Coppens"/></a>
         <a href="tienda.html?marca=emege" class="brand-card" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/jonasconstrumega-dot/doctor_web/main/img.github/emegelogo.png" alt="Emege"/></a>
-        <a href="tienda.html?marca=calorflat" class="brand-card" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/jonasconstrumega-dot/doctor_web/main/img.github/calorflat.png" alt="Calorflat"/></a>
+        <a href="tienda.html?marca=calorflat" class="brand-card" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/jonasconstrumega-dot/doctor_web/main/img.github/calorflat-logo22.png" alt="Calorflat"/></a>
         <a href="tienda.html?marca=awaduct" class="brand-card" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/jonasconstrumega-dot/doctor_web/main/img.github/awaductlogo.png" alt="Awaduct"/></a>
-        <a href="tienda.html?marca=isolant" class="brand-card" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/jonasconstrumega-dot/doctor_web/main/img.github/isolantlogo.png" alt="Isolant"/></a>
+        <a href="tienda.html?marca=isolant" class="brand-card" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/jonasconstrumega-dot/doctor_web/main/img.github/isolant-logo3.png" alt="Isolant"/></a>
         <a href="tienda.html?marca=maygas" class="brand-card" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/jonasconstrumega-dot/doctor_web/main/img.github/maygaslogo.png" alt="Maygas"/></a>
         <a href="tienda.html?marca=hidro3" class="brand-card" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/jonasconstrumega-dot/doctor_web/main/img.github/hidro3logo.png" alt="Hidro 3"/></a>
         <a href="tienda.html?marca=hidroflex" class="brand-card" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/jonasconstrumega-dot/doctor_web/main/img.github/hidroflexlogo.png" alt="Hidroflex"/></a>
+        <a href="tienda.html?marca=Coverthor" class="brand-card" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/jonasconstrumega-dot/doctor_web/main/img.github/Coverthor-logo.PNG" alt="Coverthor"/></a>
       </div>
     </div>
   </div>
@@ -589,7 +594,7 @@ ul{list-style:none}
     <div class="timeline-right">
 
       <div class="timeline-item">
-        <span class="timeline-year">AÑO 2016</span>
+        <span class="timeline-year">AÑO 2015</span>
         <div class="timeline-header"><h3 class="timeline-title">Fundación de la Empresa</h3></div>
         <p class="timeline-desc">Nace la visión de crear un centro de soluciones de ingeniería hidrosanitaria y térmica que responda con la máxima excelencia a los proyectos de la región.</p>
       </div>
@@ -625,7 +630,7 @@ ul{list-style:none}
         <span class="timeline-year">AÑO 2019</span>
         <div class="timeline-header">
           <h3 class="timeline-title">Confort con Hidroflex</h3>
-          <a href="tienda.html?marca=hidroflex" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/jonasconstrumega-dot/doctor_web/main/img.github/hidroflexlogo.png" alt="Hidroflex" class="timeline-logo"/></a>
+          <a href="tienda.html?marca=hidroflex" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/jonasconstrumega-dot/doctor_web/main/img.github/hidroflexlogo.png" alt="Hidroflex" class="timeline-logo timeline-logo--lg"/></a>
         </div>
         <p class="timeline-desc">Sistema especializado para calefacción por suelo o piso radiante. Optimizado para distribuir calor de forma uniforme y eficiente a través del suelo mediante agua caliente a baja temperatura.</p>
       </div>
@@ -643,7 +648,7 @@ ul{list-style:none}
         <span class="timeline-year">JULIO 2019</span>
         <div class="timeline-header">
           <h3 class="timeline-title">Espacios Cálidos con Volcán</h3>
-          <a href="tienda.html?marca=volcan" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/jonasconstrumega-dot/doctor_web/main/img.github/volcanlogo.png" alt="Volcán" class="timeline-logo"/></a>
+          <a href="tienda.html?marca=volcan" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/jonasconstrumega-dot/doctor_web/main/img.github/volcan-logo22.png" alt="Volcán" class="timeline-logo"/></a>
         </div>
         <p class="timeline-desc">Emblemática marca argentina de artefactos para el hogar, especializada en cocción, agua caliente y calefacción. Soluciones eficientes y accesibles para las necesidades energéticas básicas de una vivienda.</p>
       </div>
@@ -652,7 +657,7 @@ ul{list-style:none}
         <span class="timeline-year">MAYO 2020</span>
         <div class="timeline-header">
           <h3 class="timeline-title">Disfruta el Clima Ideal con Coppens</h3>
-          <a href="tienda.html?marca=coppens" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/jonasconstrumega-dot/doctor_web/main/img.github/coppenslogo.png" alt="Coppens" class="timeline-logo"/></a>
+          <a href="tienda.html?marca=coppens" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/jonasconstrumega-dot/doctor_web/main/img.github/coppens-logo22.png" alt="Coppens" class="timeline-logo"/></a>
         </div>
         <p class="timeline-desc">Empresa familiar argentina con fuerte enfoque en eficiencia energética y equipos multigas (gas natural y GLP). Alta seguridad, durabilidad y ahorro drástico de energía en calefacción y agua caliente.</p>
       </div>
@@ -661,7 +666,7 @@ ul{list-style:none}
         <span class="timeline-year">AÑO 2021</span>
         <div class="timeline-header">
           <h3 class="timeline-title">Potencia Inteligente con Emege</h3>
-          <a href="tienda.html?marca=emege" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/jonasconstrumega-dot/doctor_web/main/img.github/emegelogo.png" alt="Emege" class="timeline-logo"/></a>
+          <a href="tienda.html?marca=emege" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/jonasconstrumega-dot/doctor_web/main/img.github/emegelogo.png" alt="Emege" class="timeline-logo timeline-logo--lg"/></a>
         </div>
         <p class="timeline-desc">Empresa familiar argentina con alta eficiencia energética y equipos multigas. Climatización eficiente, agua caliente y cocción con artefactos de alta seguridad, durabilidad y ahorro de recursos.</p>
       </div>
@@ -670,7 +675,7 @@ ul{list-style:none}
         <span class="timeline-year">AÑO 2023</span>
         <div class="timeline-header">
           <h3 class="timeline-title">Coverthor: El escudo de tus cañerías</h3>
-          <a href="tienda.html?marca=coverthor" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/jonasconstrumega-dot/doctor_web/main/img.github/logo-coverthor.png" alt="Coverthor" class="timeline-logo"/></a>
+          <a href="tienda.html?marca=coverthor" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/jonasconstrumega-dot/doctor_web/main/img.github/Coverthor-logo.PNG" alt="Coverthor" class="timeline-logo timeline-logo--lg"/></a>
         </div>
         <p class="timeline-desc">Coberturas de aislamiento térmico flexible para cañerías. Previene el congelamiento del agua, ahorra hasta un 80% de energía evitando que el calor se disipe, y protege físicamente el tubo en obra.</p>
       </div>
@@ -679,7 +684,7 @@ ul{list-style:none}
         <span class="timeline-year">AÑO 2024</span>
         <div class="timeline-header">
           <h3 class="timeline-title">Evolución Térmica con Calorflat</h3>
-          <a href="tienda.html?marca=calorflat" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/jonasconstrumega-dot/doctor_web/main/img.github/logo-calorflat.png" alt="Calorflat" class="timeline-logo"/></a>
+          <a href="tienda.html?marca=calorflat" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/jonasconstrumega-dot/doctor_web/main/img.github/calorflatlogo3.png" alt="Calorflat" class="timeline-logo"/></a>
         </div>
         <p class="timeline-desc">Paneles calefactores eléctricos de bajo consumo basados en tecnología termo-cerámica. Demanda hasta 4 veces menos energía que un caloventor, no consume oxígeno y ofrece calefacción sana y sectorizada.</p>
       </div>
@@ -688,7 +693,7 @@ ul{list-style:none}
         <span class="timeline-year">AÑO ACTUAL</span>
         <div class="timeline-header">
           <h3 class="timeline-title">Isolant: Menos calor en verano, más abrigo en invierno</h3>
-          <a href="tienda.html?marca=isolant" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/jonasconstrumega-dot/doctor_web/main/img.github/isolantlogo.png" alt="Isolant" class="timeline-logo"/></a>
+          <a href="tienda.html?marca=isolant" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/jonasconstrumega-dot/doctor_web/main/img.github/isolant-logo3.png" alt="Isolant" class="timeline-logo timeline-logo--lg"/></a>
         </div>
         <p class="timeline-desc">Líder en aislación térmica, hidrófuga y acústica. Espuma de polietileno de baja densidad de celda cerrada que bloquea el frío y el calor, actúa como barrera impermeable y evita la condensación.</p>
       </div>
@@ -731,6 +736,7 @@ ul{list-style:none}
       <a href="tienda.html?categoria=climatizacion-calefaccion" class="cat-item" target="_blank" rel="noopener"><div class="cat-ring"><img src="https://raw.githubusercontent.com/jonasconstrumega-dot/doctor_web/main/img.github/climatizacionycalefaccion-circle.jpg" alt="Climatización"/></div><span class="cat-lbl">Climatización y calefacción</span></a>
       <a href="tienda.html?categoria=sistemas-calentamiento-agua" class="cat-item" target="_blank" rel="noopener"><div class="cat-ring"><img src="https://raw.githubusercontent.com/jonasconstrumega-dot/doctor_web/main/img.github/sistemacalentamientodeagua-circle.jpg" alt="Calentamiento agua"/></div><span class="cat-lbl">Sistemas de calentamiento de agua</span></a>
       <a href="tienda.html?categoria=electrodomesticos-coccion" class="cat-item" target="_blank" rel="noopener"><div class="cat-ring"><img src="https://raw.githubusercontent.com/jonasconstrumega-dot/doctor_web/main/img.github/electrodomesticoscoccion-circle.png" alt="Cocción"/></div><span class="cat-lbl">Electrodomésticos de cocción</span></a>
+      <a href="tienda.html?categoria=membranas-aislacion-termica" class="cat-item" target="_blank" rel="noopener"><div class="cat-ring"><img src="https://raw.githubusercontent.com/jonasconstrumega-dot/doctor_web/main/img.github/isolant-logocategoria.png" alt="Membranas Isolant"/></div><span class="cat-lbl">Membranas de Aislación Térmica</span></a>
     </div>
   </div>
 </section>
@@ -937,7 +943,7 @@ ul{list-style:none}
         <ul class="ft-suc-list">
           <li><span class="ft-suc-city">La Paz</span><span class="ft-suc-ph">+591 758-77375</span></li>
           <li><span class="ft-suc-city">Cochabamba</span><span class="ft-suc-ph">+591 764-00919</span></li>
-          <li><span class="ft-suc-city">Sede Oriente — Santa Cruz</span><span class="ft-suc-ph">+591 718-61628</span></li>
+          <li><span class="ft-suc-city">Santa Cruz</span><span class="ft-suc-ph">+591 718-61628</span></li>
         </ul>
       </div>
 

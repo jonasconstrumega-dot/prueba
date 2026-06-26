@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Preguntas Frecuentes Técnicas | ConstruMega Bolivia</title>
+<meta name="description" content="Respuestas técnicas oficiales sobre calefactores Coppens, Orbis, Volcán, Emege, termotanques, aislantes Isolant, tuberías Hidro 3, Maygas, Awaduct, Hidroflex y Coverthor. ConstruMega Bolivia."/>
+<meta property="og:title" content="FAQ Técnico | ConstruMega Bolivia"/>
+<meta property="og:image" content="https://raw.githubusercontent.com/jonasconstrumega-dot/doctor_web/main/img.github/logo-construmega33.jpg"/>
+<meta name="robots" content="index,follow"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Barlow+Condensed:wght@700;900&display=swap');
+
+/* ═══════════════ TOKENS — LIGHT MODE ═══════════════ */
+:root{
+  --cel:#3da8bc;      /* celeste más saturado sobre blanco */
+  --nar:#F8A413;      /* naranja corporativo — sin cambios */
+  --ver:#04FF00;
+  --osc:#1a1f2e;      /* casi negro azulado para textos */
+  --azul:#0F2340;
+  --azul2:#1E4D8C;
+  --bla:#FFFFFF;
+  --gbg:#F5F7FA;      /* gris técnico ultra claro */
+  --gbor:#DDE2EA;
+  --surface:#FFFFFF;  /* superficies de cards */
+  --surface2:#F0F2F6; /* alternancia suave */
+  --font:'Inter',sans-serif; --cond:'Barlow Condensed',sans-serif;
+  --t:all .28s ease; --r:12px; --r-xl:20px;
+  --sh:0 2px 12px rgba(0,0,0,.06),0 8px 32px rgba(0,0,0,.05);
+  --sh-hover:0 4px 20px rgba(0,0,0,.10),0 12px 40px rgba(0,0,0,.08);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font);background:var(--gbg);color:var(--osc);
+  line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+
+/* ═══════════════ TOPBAR ════════════════════════════ */
+.topbar{
+  background:rgba(255,255,255,.95);backdrop-filter:blur(16px);
+  padding:11px 28px;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:16px;flex-wrap:wrap;
+  border-bottom:1px solid var(--gbor);
+  box-shadow:0 1px 12px rgba(0,0,0,.06);
+  position:sticky;top:0;z-index:900;
+}
+.topbar-brand{
+  font-size:.72rem;font-weight:700;letter-spacing:.05em;
+  color:#aab0bc;text-transform:uppercase;
+}
+.topbar-brand em{font-style:normal;color:var(--nar)}
+.btn-back{
+  display:inline-flex;align-items:center;gap:7px;
+  background:var(--gbg);border:1.5px solid var(--gbor);
+  color:#5a6478;font-size:.72rem;font-weight:700;
+  letter-spacing:.07em;text-transform:uppercase;
+  padding:7px 16px;border-radius:8px;transition:var(--t);
+}
+.btn-back:hover{
+  background:rgba(248,164,19,.08);border-color:var(--nar);
+  color:var(--nar);
+}
+.btn-back svg{width:13px;height:13px;flex-shrink:0}
+
+/* ═══════════════ HERO ══════════════════════════════ */
+.hero{
+  background:linear-gradient(135deg,#0F2340 0%,#1E4D8C 60%,#1a3d70 100%);
+  padding:56px 28px 44px;text-align:center;position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+  background-size:44px 44px;
+}
+.hero-eye{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:.6rem;font-weight:700;letter-spacing:.22em;
+  text-transform:uppercase;color:rgba(255,255,255,.65);margin-bottom:12px;
+  position:relative;
+}
+.hero-eye::before{content:'';display:inline-block;
+  width:22px;height:2px;background:var(--nar);border-radius:2px}
+.hero h1{
+  font-family:var(--cond);font-size:clamp(2rem,4.5vw,3.2rem);
+  font-weight:900;color:#fff;letter-spacing:-.02em;line-height:1.08;
+  margin-bottom:12px;position:relative;
+}
+.hero h1 em{font-style:normal;color:var(--nar)}
+.hero p{
+  font-size:.88rem;color:rgba(255,255,255,.65);
+  max-width:520px;margin:0 auto;line-height:1.7;position:relative;
+}
+
+/* ═══════════════ TABS ══════════════════════════════ */
+.tab-bar-wrap{
+  background:#fff;
+  border-bottom:2px solid var(--gbor);
+  position:sticky;top:52px;z-index:800;
+  overflow-x:auto;-webkit-overflow-scrolling:touch;
+  box-shadow:0 2px 8px rgba(0,0,0,.05);
+}
+.tab-bar-wrap::-webkit-scrollbar{height:3px}
+.tab-bar-wrap::-webkit-scrollbar-thumb{background:var(--nar);border-radius:2px}
+.tab-bar{
+  display:flex;gap:0;min-width:max-content;
+  padding:0 20px;
+}
+.tab-btn{
+  display:flex;align-items:center;gap:8px;
+  padding:14px 20px;font-size:.75rem;font-weight:700;
+  letter-spacing:.04em;text-transform:uppercase;
+  color:#8a94a6;border:none;background:transparent;
+  cursor:pointer;transition:var(--t);white-space:nowrap;
+  border-bottom:3px solid transparent;margin-bottom:-2px;position:relative;
+}
+.tab-btn .tab-icon{font-size:1rem;line-height:1}
+.tab-btn:hover{color:var(--osc)}
+.tab-btn.active{color:var(--nar);border-bottom-color:var(--nar);font-weight:800}
+
+/* ═══════════════ BODY ══════════════════════════════ */
+.page-body{max-width:900px;margin:0 auto;padding:36px 20px 80px}
+
+/* ═══════════════ PANEL DE MARCA ════════════════════ */
+.brand-panel{display:none}
+.brand-panel.active{display:block}
+
+.brand-header{
+  display:flex;align-items:center;gap:16px;
+  margin-bottom:28px;padding-bottom:20px;
+  border-bottom:2px solid var(--gbor);
+}
+.brand-logo{
+  width:64px;height:64px;flex-shrink:0;
+  background:var(--gbg);border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  border:1.5px solid var(--gbor);padding:8px;overflow:hidden;
+}
+.brand-logo img{width:100%;height:100%;object-fit:contain}
+.brand-meta{}
+.brand-cats{
+  font-size:.6rem;font-weight:700;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--cel);margin-bottom:4px;
+}
+.brand-name{
+  font-family:var(--cond);font-size:1.5rem;font-weight:900;
+  color:var(--osc);line-height:1;
+}
+.brand-name em{font-style:normal;color:var(--nar)}
+
+/* ═══════════════ GRUPO DE CATEGORÍA ════════════════ */
+.cat-group{margin-bottom:36px}
+.cat-group-title{
+  font-size:.65rem;font-weight:700;letter-spacing:.2em;
+  text-transform:uppercase;color:#8a94a6;
+  margin-bottom:12px;display:flex;align-items:center;gap:8px;
+}
+.cat-group-title::after{
+  content:'';flex:1;height:1px;
+  background:var(--gbor);
+}
+
+/* ═══════════════ ACORDEÓN ══════════════════════════ */
+.faq-item{
+  background:var(--surface);
+  border:1.5px solid var(--gbor);
+  border-radius:var(--r);margin-bottom:8px;
+  overflow:hidden;transition:border-color .28s ease,box-shadow .28s ease;
+}
+.faq-item.open{
+  border-color:var(--nar);
+  box-shadow:0 4px 20px rgba(248,164,19,.10);
+}
+.faq-q{
+  display:flex;align-items:flex-start;justify-content:space-between;
+  gap:14px;padding:16px 18px;cursor:pointer;
+  list-style:none;user-select:none;
+  background:var(--surface);transition:background .2s ease;
+}
+.faq-q:hover{background:var(--surface2)}
+.faq-q::-webkit-details-marker{display:none}
+.faq-q-text{
+  font-size:.88rem;font-weight:600;color:#374151;
+  line-height:1.45;flex:1;transition:color .25s ease;margin:0;
+  font-family:var(--font);letter-spacing:0;text-transform:none;
+}
+.faq-item.open .faq-q-text{color:var(--osc)}
+.faq-icon{
+  flex-shrink:0;width:26px;height:26px;border-radius:50%;
+  border:1.5px solid var(--gbor);
+  display:flex;align-items:center;justify-content:center;
+  color:#aab0bc;transition:all .3s ease;margin-top:1px;
+  background:var(--gbg);
+}
+.faq-item.open .faq-icon{
+  background:var(--nar);border-color:var(--nar);
+  color:#fff;transform:rotate(45deg);
+}
+.faq-icon svg{width:12px;height:12px}
+
+/* Respuesta */
+.faq-a{
+  max-height:0;overflow:hidden;
+  transition:max-height .42s cubic-bezier(.4,0,.2,1);
+}
+.faq-item.open .faq-a{max-height:2000px}
+.faq-a-inner{
+  padding:0 18px 18px;
+  border-top:1px solid var(--gbor);
+  background:var(--surface);
+}
+.faq-a-inner p{
+  font-size:.84rem;color:#4b5563;
+  line-height:1.75;margin-top:14px;
+}
+.faq-a-inner p strong{color:var(--osc);font-weight:700}
+.faq-a-inner p em{font-style:normal;color:#0f7a8c;font-weight:600}
+.faq-a-inner ul,.faq-a-inner ol{
+  margin:12px 0 0 18px;
+  color:#4b5563;font-size:.83rem;line-height:1.7;
+}
+.faq-a-inner li{margin-bottom:4px}
+.faq-a-inner li strong{color:var(--osc)}
+
+/* ═══════════════ TABLAS COMPARATIVAS ═══════════════ */
+.compare-table-wrap{
+  overflow-x:auto;margin-top:16px;
+  border-radius:var(--r);border:1.5px solid var(--gbor);
+}
+.compare-table-wrap::-webkit-scrollbar{height:4px}
+.compare-table-wrap::-webkit-scrollbar-thumb{background:var(--nar);border-radius:2px}
+.compare-table{width:100%;border-collapse:collapse;font-size:.8rem}
+.compare-table th{
+  background:#f0f4f8;color:#5a6478;
+  font-size:.6rem;font-weight:800;letter-spacing:.12em;
+  text-transform:uppercase;padding:10px 14px;
+  text-align:left;white-space:nowrap;
+  border-bottom:1.5px solid var(--gbor);
+}
+.compare-table th:first-child{color:var(--osc)}
+.compare-table td{
+  padding:10px 14px;color:#4b5563;
+  border-bottom:1px solid var(--gbor);
+  line-height:1.5;vertical-align:top;
+}
+.compare-table tr:last-child td{border-bottom:none}
+.compare-table tr:nth-child(even) td{background:#fafbfc}
+.compare-table td:first-child{
+  font-weight:700;color:var(--osc);
+  white-space:nowrap;
+}
+.compare-table td strong{color:var(--osc);font-weight:700}
+.compare-table .col-win{color:#0f7a8c;font-weight:700}
+
+/* Highlight box */
+.info-box{
+  background:#eef8fb;
+  border:1px solid #b8dfe8;
+  border-left:3px solid var(--cel);
+  border-radius:0 var(--r) var(--r) 0;
+  padding:12px 16px;margin-top:14px;
+  font-size:.81rem;color:#2d6b7a;line-height:1.65;
+}
+.info-box strong{color:#1a4a56}
+.warn-box{
+  background:#fff8ec;
+  border:1px solid #fcd88a;
+  border-left:3px solid var(--nar);
+  border-radius:0 var(--r) var(--r) 0;
+  padding:12px 16px;margin-top:14px;
+  font-size:.81rem;color:#7a5200;line-height:1.65;
+}
+.warn-box strong{color:#b87800}
+
+/* ═══════════════ RESPONSIVE ════════════════════════ */
+@media(max-width:600px){
+  .hero{padding:44px 18px 32px}
+  .page-body{padding:24px 12px 60px}
+  .tab-bar{padding:0 12px}
+  .tab-btn{padding:12px 13px;font-size:.68rem}
+  .faq-q{padding:13px 14px}
+  .faq-a-inner{padding:0 14px 14px}
+  .compare-table td,.compare-table th{padding:8px 10px}
+  .brand-header{flex-direction:column;align-items:flex-start;gap:12px}
+  .topbar{padding:10px 14px}
+}
+@media(prefers-reduced-motion:reduce){
+  .faq-a,.faq-icon,.faq-item{transition:none}
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <a href="index.html" class="btn-back">
+    <svg viewBox="0 0 14 14" fill="none">
+      <path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    Volver al Inicio
+  </a>
+<a href="calculadoras.html" class="btn-back" style="margin-left: 15px;">Simuladores</a>
+  <span class="topbar-brand">ConstruMega <em>·</em> Centro de Ayuda</span>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <p class="hero-eye">Centro de Ayuda Técnica · ConstruMega</p>
+  <h1>Preguntas <em>Frecuentes</em></h1>
+  <p>Respuestas técnicas oficiales sobre todos nuestros productos.<br/>
+     Seleccioná la marca para ir directo a lo que necesitás.</p>
+</div>
+
+<!-- TABS -->
+<div class="tab-bar-wrap" id="tabBar">
+  <div class="tab-bar" role="tablist">
+    <button class="tab-btn active" role="tab" data-tab="calef" aria-selected="true">
+      <span class="tab-icon">🔥</span> Calefactores
+    </button>
+    <button class="tab-btn" role="tab" data-tab="termo" aria-selected="false">
+      <span class="tab-icon">🌡️</span> Termotanques
+    </button>
+    <button class="tab-btn" role="tab" data-tab="calorflat" aria-selected="false">
+      <span class="tab-icon">⚡</span> Calorflat
+    </button>
+    <button class="tab-btn" role="tab" data-tab="isolant" aria-selected="false">
+      <span class="tab-icon">🏠</span> Isolant
+    </button>
+    <button class="tab-btn" role="tab" data-tab="awaduct" aria-selected="false">
+      <span class="tab-icon">🏗️</span> Awaduct
+    </button>
+    <button class="tab-btn" role="tab" data-tab="maygas" aria-selected="false">
+      <span class="tab-icon">🔧</span> Maygas
+    </button>
+    <button class="tab-btn" role="tab" data-tab="hidro3" aria-selected="false">
+      <span class="tab-icon">💧</span> Hidro 3
+    </button>
+    <button class="tab-btn" role="tab" data-tab="hidroflex" aria-selected="false">
+      <span class="tab-icon">♨️</span> HidroFlex
+    </button>
+    <button class="tab-btn" role="tab" data-tab="coverthor" aria-selected="false">
+      <span class="tab-icon">🛡️</span> Coverthor
+    </button>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="page-body">
+
+<!-- ══════════════════════════════════════════════════
+     TAB 1: CALEFACTORES — Coppens / Orbis / Volcán / Emege
+     ═══════════════════════════════════════════════ -->
+<div class="brand-panel active" id="tab-calef">
+  <div class="brand-header">
+    <div class="brand-logo">
+      <img src="https://raw.githubusercontent.com/jonasconstrumega-dot/doctor_web/main/img.github/coppens-logo22.png" alt="Coppens"/>
+    </div>
+    <div class="brand-meta">
+      <p class="brand-cats">Calefactores · Estufas a Gas</p>
+      <p class="brand-name">Coppens · Orbis · <em>Volcán · Emege</em></p>
+    </div>
+  </div>
+
+  <div class="cat-group">
+    <p class="cat-group-title">Seguridad e Instalación</p>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+          <h3 class="faq-q-text">¿Qué calefactor es seguro para un dormitorio o baño en Bolivia?</h3>
+          <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Por estrictas normativas de seguridad, en dormitorios y baños solo se deben instalar calefactores a gas de <strong>Tiro Balanceado</strong> (como nuestros modelos <em>Orbis</em> o <em>Coppens</em>), ya que toman el oxígeno del exterior y expulsan los gases fuera del ambiente. Como alternativa sin instalación, las estufas eléctricas de bajo consumo también son una excelente opción.</p>
+          <div class="warn-box"><strong>⚠ Obligatorio:</strong> Los calefactores sin salida al exterior o de tiro natural están prohibidos en baños y dormitorios por riesgo de monóxido de carbono.</div>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+          <h3 class="faq-q-text">¿Por qué la instalación debe ser realizada por un profesional matriculado?</h3>
+          <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Porque el profesional matriculado cuenta con la capacitación adecuada para realizar la instalación de acuerdo con las <strong>Disposiciones y Normas Mínimas ANH (Anexo 5)</strong>. Una instalación incorrecta puede ocasionar pérdidas de gas, incorrecta evacuación del monóxido de carbono y riesgos graves para los ocupantes.</p>
+          <div class="warn-box"><strong>Atención:</strong> Su producto quedará automáticamente <strong>fuera de garantía de fábrica</strong> si se verifican deficiencias en la instalación.</div>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+          <h3 class="faq-q-text">¿Puede instalarse un calefactor apoyado en el piso?</h3>
+          <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>NO.</strong> En todos los modelos se indica una altura mínima de separación del piso por dos razones:</p>
+          <ul>
+            <li>Evitar sobre temperatura en el piso por debajo del calefactor.</li>
+            <li>Por principio de convección: el aire frío ingresa por la parte inferior para emitir aire caliente por la salida. Un calefactor apoyado en el piso no permite una correcta calefacción del ambiente.</li>
+          </ul>
+        </div></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="cat-group">
+    <p class="cat-group-title">Funcionamiento Técnico</p>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+          <h3 class="faq-q-text">¿Qué es la ventilación U en los calefactores de Tiro Balanceado?</h3>
+          <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>La ventilación en U o ventilación vertical es una opción para ambientes sin pared exterior, disponible en potencias de <strong>3000 y 5000 kcal/h</strong>. Permite instalar el calefactor en una pared interior usando el accesorio <strong>TBU</strong>, que transforma la salida horizontal de dos conductos concéntricos a vertical en 2 conductos de 3" de diámetro.</p>
+          <div class="info-box">Los conductos se prolongan verticalmente hasta rematar a los 4 vientos con un máximo de <strong>6 mts.</strong> La salida de gases debe quedar <strong>15 cm más alto</strong> que la entrada de aire.</div>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+          <h3 class="faq-q-text">¿Qué diferencias hay entre calefactor sin salida, tiro natural y tiro balanceado?</h3>
+          <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <div class="compare-table-wrap">
+            <table class="compare-table">
+              <tr><th>Tipo</th><th>Oxígeno</th><th>Gases</th><th>Dormitorio/Baño</th></tr>
+              <tr><td>Sin salida al exterior</td><td>Del ambiente</td><td>Al ambiente</td><td style="color:#ff6b6b;font-weight:700">❌ Prohibido</td></tr>
+              <tr><td>Tiro Natural</td><td>Del ambiente</td><td>Al exterior (conducto)</td><td style="color:#ff6b6b;font-weight:700">❌ Prohibido</td></tr>
+              <tr><td>Tiro Balanceado</td><td>Del exterior</td><td>Al exterior</td><td class="col-win">✓ Permitido</td></tr>
+            </table>
+          </div>
+          <p>Los ambientes con calefactor sin salida deben contar con rejillas superior e inferior reglamentarias. Los de tiro natural requieren rejilla inferior y conducto al exterior.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+          <h3 class="faq-q-text">¿Cómo funcionan los calefactores con termostato?</h3>
+          <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>El termostato tiene una perilla que permite seleccionar el nivel de calefacción. El quemador funciona a <strong>máxima potencia</strong> hasta alcanzar el nivel seleccionado, luego pasa a <strong>mínima potencia</strong>, y vuelve a máxima cuando detecta un descenso de temperatura. Esto aplica tanto a modelos de tiro balanceado como sin salida al exterior.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+          <h3 class="faq-q-text">¿Se pueden utilizar con Gas Licuado (GLP)?</h3>
+          <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Sí.</strong> Toda la línea se fabrica con el sistema <em>Multigas</em>. Los calefactores salen de fábrica preparados para gas natural (GN) e incluyen un kit con los elementos necesarios para la conversión y uso con gas licuado (GL / GLP). No se requiere comprar un modelo diferente.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+          <h3 class="faq-q-text">¿Pueden producir olores los calefactores recién instalados?</h3>
+          <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Sí, es normal. En los procesos productivos se utilizan resinas y solventes que se evaporan al encender el calefactor por primera vez. <strong>Se recomienda mantener el ambiente ventilado durante los primeros momentos de funcionamiento</strong> para eliminar los olores iniciales.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+          <h3 class="faq-q-text">¿Es seguro el convector móvil a garrafa?</h3>
+          <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Sí, cuenta con <strong>Doble Sistema de Seguridad</strong>:</p>
+          <ul>
+            <li><strong>Válvula de seguridad:</strong> en caso de falta de llama, corta automáticamente el paso de gas a los quemadores.</li>
+            <li><strong>Piloto analizador de ambientes:</strong> al detectar una disminución del oxígeno del 2–3% por debajo de los valores normales, apaga completamente el equipo.</li>
+          </ul>
+          <p>Una garrafa usada 12 hs. diarias tiene una duración de <strong>aproximadamente 10 días</strong>.</p>
+        </div></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="cat-group">
+    <p class="cat-group-title">Mantenimiento</p>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+          <h3 class="faq-q-text">¿Necesitan mantenimiento los calefactores a gas?</h3>
+          <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Sí. Todos los equipos a gas necesitan <strong>revisiones anuales</strong> de funcionamiento, dispositivos de seguridad y limpieza de quemadores. Se recomienda realizar el mantenimiento <strong>una vez al año al inicio de la temporada invernal</strong>, especialmente luego de períodos sin uso.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+          <h3 class="faq-q-text">¿Cómo funciona la Calculadora Térmica de ConstruMega?</h3>
+          <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>El sistema multiplica el <strong>largo × ancho</strong> del ambiente considerando una <strong>altura estándar de 2,70 m</strong> para obtener los metros cúbicos (m³). Luego aplica un factor de rendimiento de <strong>50 kcal por m³</strong> para recomendar el modelo exacto del stock Orbis o Coppens que mejor se adapta a tu espacio.</p>
+          <div class="info-box">Ejemplo: 4 m × 4 m × 2,70 m = 43,2 m³ × 50 = <strong>2.160 kcal/h requeridas</strong> → recomendamos equipo de ~2.500 kcal/h.</div>
+        </div></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     TAB 2: TERMOTANQUES
+     ═══════════════════════════════════════════════ -->
+<div class="brand-panel" id="tab-termo">
+  <div class="brand-header">
+    <div class="brand-logo">
+      <img src="https://raw.githubusercontent.com/jonasconstrumega-dot/doctor_web/main/img.github/coppens-logo22.png" alt="Coppens Orbis"/>
+    </div>
+    <div class="brand-meta">
+      <p class="brand-cats">Termotanques a Gas y Eléctricos</p>
+      <p class="brand-name">Coppens · Orbis · <em>Volcán · Emege</em></p>
+    </div>
+  </div>
+
+  <div class="cat-group">
+    <p class="cat-group-title">Termotanques a Gas</p>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+          <h3 class="faq-q-text">¿Qué diferencia hay entre los termotanques tradicionales y los de Alta Recuperación?</h3>
+          <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <div class="compare-table-wrap">
+            <table class="compare-table">
+              <tr><th>Característica</th><th>Tradicional</th><th>Alta Recuperación</th></tr>
+              <tr><td>Base de funcionamiento</td><td>Agua acumulada</td><td class="col-win">Potencia del quemador</td></tr>
+              <tr><td>Tiempo de calentamiento</td><td>Prolongado</td><td class="col-win">Mínimo</td></tr>
+              <tr><td>Prestación</td><td>Limitada</td><td class="col-win">Similar a instantáneo</td></tr>
+              <tr><td>Tamaño</td><td>Similar</td><td>Similar</td></tr>
+            </table>
+          </div>
+          <p>Los de Alta Recuperación son prácticamente independientes de la cantidad de agua acumulada gracias a la potencia de sus quemadores.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+          <h3 class="faq-q-text">¿Se puede instalar un termotanque a gas en el baño?</h3>
+          <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>El artefacto cuenta con un dispositivo especial para prevenir accidentes por monóxido de carbono (CO), pero <strong>esto no habilita su instalación en baños ni dormitorios</strong>, ni evita las exigencias reglamentarias de ventilación. Cualquier manipulación de los dispositivos de seguridad entraña un grave riesgo.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+          <h3 class="faq-q-text">El termotanque pierde agua — ¿Qué hago?</h3>
+          <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Puede tener varios orígenes: condensación, pérdida por conexiones, válvula de alivio o rotura del tanque. <strong>Al encenderse por primera vez puede observarse goteo por condensación</strong> — esto es normal y desaparece al entrar en régimen.</p>
+          <p>En cualquier caso, recurra al instalador matriculado. Si se verifica falla del artefacto y no de la instalación, solicite servicio técnico oficial.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+          <h3 class="faq-q-text">El termotanque se apaga solo — ¿Qué hago?</h3>
+          <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>El apagado recurrente puede originarse por alguna deficiencia en el ducto de evacuación de gases. Todos los termotanques poseen un <strong>piloto analizador de gases</strong> que apaga el equipo cuando detecta un ambiente viciado o insuficiente oxígeno para la combustión.</p>
+          <div class="info-box">Es fundamental respetar todas las condiciones de instalación <strong>ANH Anexo 5</strong> para garantizar un correcto funcionamiento.</div>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+          <h3 class="faq-q-text">¿En qué consiste el mantenimiento del termotanque a gas?</h3>
+          <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <ul>
+            <li><strong>Mensualmente:</strong> Drene 20 litros de agua por el grifo de purga para limpiar el sarro del fondo del tanque.</li>
+            <li><strong>Anualmente:</strong> Haga revisar el <strong>ánodo de magnesio</strong> (barra anticorrosiva) por personal técnico autorizado.</li>
+          </ul>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+          <h3 class="faq-q-text">¿Se pueden usar bombas presurizadoras con los termotanques?</h3>
+          <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Sí, pero la bomba debe contar con un <strong>vaso de expansión</strong> para evitar que la válvula gotee. Un caudal excesivo perjudicaría la recuperación del termotanque. Busque asesoramiento especializado para la compra correcta según sus necesidades.</p>
+        </div></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="cat-group">
+    <p class="cat-group-title">Termotanques Eléctricos</p>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+          <h3 class="faq-q-text">¿Se puede instalar en el exterior o en lugares húmedos?</h3>
+          <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>NO.</strong> El termotanque eléctrico no debe instalarse en el exterior ni en lugares húmedos o expuestos a la acción directa del agua.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+          <h3 class="faq-q-text">¿El termotanque eléctrico se puede instalar en un baño?</h3>
+          <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Sí, a diferencia del termotanque a gas, el eléctrico <strong>puede instalarse en baños</strong>, siempre y cuando se ubique a más de <strong>60 cm de la bañera o ducha</strong>, hasta la altura del cielorraso.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+          <h3 class="faq-q-text">¿Se puede regular la temperatura del termotanque eléctrico?</h3>
+          <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>El termostato viene calibrado de fábrica en su <strong>temperatura máxima</strong> para mayor rendimiento. No obstante, el usuario puede regularla siguiendo las instrucciones del manual (página 12 del manual de uso).</p>
+        </div></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     TAB 3: CALORFLAT
+     ═══════════════════════════════════════════════ -->
+<div class="brand-panel" id="tab-calorflat">
+  <div class="brand-header">
+    <div class="brand-logo">
+      <img src="https://raw.githubusercontent.com/jonasconstrumega-dot/doctor_web/main/img.github/calorflat-logo22.png" alt="Calorflat"/>
+    </div>
+    <div class="brand-meta">
+      <p class="brand-cats">Calefactor / Estufa Eléctrica Termo-Cerámica</p>
+      <p class="brand-name">Calor<em>Flat</em></p>
+    </div>
+  </div>
+
+  <div class="faq-list">
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+        <h3 class="faq-q-text">¿Consume mucho el panel Calorflat?</h3>
+        <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+      </div>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>Consume menos que otros sistemas eléctricos con mejores prestaciones. Para calcular el costo por hora:</p>
+        <div class="info-box"><strong>Fórmula:</strong> Costo/hora = (Valor del KW de tu factura − subsidio) ÷ 1000 W × Watts del modelo Calorflat<br/>Modelos disponibles: 260W · 420W · 520W · 620W · 940W · 840W · 1100W</div>
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+        <h3 class="faq-q-text">¿Cómo y dónde se instala el panel Calorflat?</h3>
+        <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+      </div>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>Se instala a <strong>15–20 cm del piso</strong>, fijado con 3 tornillos a la pared y enchufado a una toma corriente 220V. <strong>No requiere mano de obra especializada</strong> ni romper pisos, techos o paredes.</p>
+        <p>Para mejor rendimiento, ubicarlo sobre paredes orientadas al exterior, próximo a ventanas o debajo de ellas. No debe haber obstrucciones (muebles, cortinas) delante ni sobre el panel.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+        <h3 class="faq-q-text">¿Es tóxico o contraproducente en algún caso?</h3>
+        <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+      </div>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>No presenta ninguna sustancia tóxica. Todos sus elementos son neutros e inodoros. No consume oxígeno del ambiente ni produce gases de combustión, por lo que es <em>apto para cualquier tipo de habitación</em>.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+        <h3 class="faq-q-text">¿Puede permanecer encendido todo el día?</h3>
+        <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+      </div>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>Sí. Puede estar encendido durante las <strong>24 horas de todo el invierno</strong> sin inconvenientes. Su tecnología termo-cerámica está diseñada para uso continuo de larga duración.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+        <h3 class="faq-q-text">¿Por qué calefacción sectorizada?</h3>
+        <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+      </div>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>La calefacción central regula todos los ambientes desde un solo termostato, sin lograr una temperatura adecuada en cada espacio. Al colocar <strong>un termostato por ambiente</strong> con Calorflat, se mejora en un 100% la eficiencia y el confort en cada habitación.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+        <h3 class="faq-q-text">¿Cuáles son las condiciones de garantía?</h3>
+        <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+      </div>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>MendoClima S.A. garantiza el panel calefactor Calorflat por <strong>3 años desde la fecha de venta</strong>. Ante defectos de fabricación, procederá a reemplazarlo sin cargo.</p>
+        <div class="warn-box"><strong>Excluido de garantía:</strong> averías por transporte, error de instalación, insuficiencia eléctrica, mantenimiento inadecuado, negligencia, limpieza con abrasivos, o uso distinto al indicado en el manual.</div>
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+        <h3 class="faq-q-text">¿Cómo se limpia el panel Calorflat?</h3>
+        <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+      </div>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>Primero desconecte el equipo de la red eléctrica. Limpie únicamente con un <strong>paño húmedo</strong>. No utilice productos abrasivos, aceites ni ceras sobre la superficie.</p>
+      </div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     TAB 4: ISOLANT
+     ═══════════════════════════════════════════════ -->
+<div class="brand-panel" id="tab-isolant">
+  <div class="brand-header">
+    <div class="brand-logo">
+      <img src="https://raw.githubusercontent.com/jonasconstrumega-dot/doctor_web/main/img.github/isolant-logo3.png" alt="Isolant"/>
+    </div>
+    <div class="brand-meta">
+      <p class="brand-cats">Aislante Térmico · Hidrófugo · Acústico</p>
+      <p class="brand-name">Iso<em>lant</em></p>
+    </div>
+  </div>
+
+  <div class="cat-group">
+    <p class="cat-group-title">Preguntas Generales</p>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+          <h3 class="faq-q-text">¿Cómo aíslan térmicamente las membranas Isolant?</h3>
+          <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Actúan por dos mecanismos simultáneos: <strong>reflexión</strong> (el film aluminizado refleja el calor transmitido por radiación a través de una cámara de aire) y <strong>masa</strong> (la espuma de polietileno aísla el calor transmitido por conducción).</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+          <h3 class="faq-q-text">¿Qué es la espuma Isolant?</h3>
+          <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Es una <strong>espuma de polietileno de celda cerrada de baja densidad</strong>. La celda contiene aire estanco, logrando una conductividad térmica baja e inalterable. Además, es totalmente impermeable al agua y al vapor de agua — no absorbe humedad ni la transporta.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+          <h3 class="faq-q-text">¿Cuál es la vida útil de las membranas Isolant?</h3>
+          <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Las membranas Isolant tienen la <strong>misma vida útil que el techo</strong>. El material no es apto para permanecer expuesto a la intemperie continuamente por la acción de los rayos UV. Una vez instalado bajo la cubierta, no presenta inconvenientes.</p>
+          <div class="info-box">Los productos de la línea <strong>VIVIENDA</strong> tienen diferentes períodos de exposición a la intemperie — consultar en cada caso.</div>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+          <h3 class="faq-q-text">¿Hacia qué lado se coloca el aluminio/aluminizado?</h3>
+          <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>El film aluminizado o de aluminio debe ir colocado <strong>"mirando" hacia la superficie radiante</strong> para reflejar ese calor — habitualmente hacia arriba, en dirección a la cubierta.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+          <h3 class="faq-q-text">¿Qué diferencia hay entre TBA, TBA Multicapa y Doble Alu?</h3>
+          <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <div class="compare-table-wrap">
+            <table class="compare-table">
+              <tr><th>Línea</th><th>Caras</th><th>Característica especial</th></tr>
+              <tr><td>TBA</td><td>1 cara aluminizada</td><td>Estándar residencial</td></tr>
+              <tr><td>TBA Multicapa</td><td>1 cara aluminio puro gofrado</td><td class="col-win">Mayor resistencia mecánica y atmosférica</td></tr>
+              <tr><td>Doble Alu</td><td>2 caras aluminio puro</td><td class="col-win">Mayor aislación + barrera de fuego RE2 (INTI)</td></tr>
+            </table>
+          </div>
+          <p>El aluminio puro de la línea <strong>Doble Alu</strong> actúa como barrera de fuego y protege la espuma de la radiación UV. Es ideal para galpones e industrias con posibilidad de hidro lavado.</p>
+        </div></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="cat-group">
+    <p class="cat-group-title">Colocación</p>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+          <h3 class="faq-q-text">¿Cómo se unen las membranas Isolant?</h3>
+          <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <ul>
+            <li><strong>TBA5, TBA10 y TBA Multicapa:</strong> poseen el solape autoadhesivo RAPI-TAC.</li>
+            <li><strong>Línea INDUSTRIA y ALU FUSION:</strong> rebaje para termo soldado patentado con pistola de aire caliente.</li>
+            <li><strong>Demás productos:</strong> por solape o a tope con cinta adhesiva.</li>
+          </ul>
+          <div class="warn-box"><strong>Nunca</strong> intente unir las membranas Isolant con soplete.</div>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+          <h3 class="faq-q-text">¿En la zona de clavado pueden producirse filtraciones?</h3>
+          <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>No. La naturaleza elástica de la membrana hace que se <strong>cierre en torno al clavo, tornillo o fijación</strong>, impidiendo que el agua filtre por ese punto.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+          <h3 class="faq-q-text">¿Es necesario colocar un sostén en galpones?</h3>
+          <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Sí. Las membranas de la línea <strong>INDUSTRIA</strong> deben ir siempre sobre un tendido de malla de alambre o red de sostén plástica, para evitar deformaciones por dilatación y contracción de la chapa y garantizar la vida útil.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+          <h3 class="faq-q-text">¿Cómo aíslo la humedad en el fondo de un muro o placard?</h3>
+          <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Por lo general es un problema de condensación. Si el interior del muro está mojado, el problema persistirá mientras no se solucione la impermeabilización, ya que el muro mojado actúa como puente térmico. <strong>Agregar una membrana Isolant no soluciona completamente el problema</strong> — en el mejor de los casos lo cubre.</p>
+          <div class="warn-box">Para una solución integral, consulte primero con su arquitecto.</div>
+        </div></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     TAB 5: AWADUCT
+     ═══════════════════════════════════════════════ -->
+<div class="brand-panel" id="tab-awaduct">
+  <div class="brand-header">
+    <div class="brand-logo">
+      <img src="https://raw.githubusercontent.com/jonasconstrumega-dot/doctor_web/main/img.github/awaductlogo.png" alt="Awaduct"/>
+    </div>
+    <div class="brand-meta">
+      <p class="brand-cats">Desagüe Cloacal y Pluvial · Polipropileno</p>
+      <p class="brand-name">Awa<em>duct</em></p>
+    </div>
+  </div>
+
+  <div class="faq-list">
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+        <h3 class="faq-q-text">¿Es obligatorio usar el lubricante de la marca Awaduct?</h3>
+        <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+      </div>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>Sí, es indispensable. El uso de detergente, grasa mineral o vaselina <strong>degrada la goma del O'Ring</strong> con el tiempo. Los Lubricantes Originales Awaduct (en spray, pasta o aerosol) están formulados específicamente para mantener el volumen y la elasticidad del anillo de doble labio.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+        <h3 class="faq-q-text">¿Qué pasa si meto el caño hasta el fondo del acople?</h3>
+        <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+      </div>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>Puede causar deformaciones. En tramos largos expuestos a variaciones térmicas, se debe introducir el caño a tope y luego <strong>retirarlo 1 cm hacia atrás</strong>. Esto crea una "cámara de dilatación" interna que absorbe los movimientos cuando pasa agua caliente.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+        <h3 class="faq-q-text">¿Se puede usar Awaduct para agua a presión?</h3>
+        <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+      </div>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p><strong>No, bajo ninguna circunstancia.</strong> Awaduct está diseñado exclusivamente para trabajar por gravedad en desagües cloacales y pluviales. Para agua fría o caliente a presión, utilizar el sistema <em>Hidro 3</em>.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+        <h3 class="faq-q-text">¿Se conectan caños Awaduct con caños viejos de plomo o hierro fundido?</h3>
+        <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+      </div>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>Sí, mediante <strong>Golletes de transición</strong>. Tienen un extremo de goma adaptable que abraza el plomo, hierro, hormigón o fibrocemento, y una boca con O'Ring para continuar la instalación en polipropileno.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+        <h3 class="faq-q-text">Ventajas de Awaduct frente al PVC</h3>
+        <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+      </div>
+      <div class="faq-a"><div class="faq-a-inner">
+        <div class="compare-table-wrap">
+          <table class="compare-table">
+            <tr><th>Característica</th><th>Awaduct (PP)</th><th>PVC</th></tr>
+            <tr><td>Unión</td><td class="col-win">O'Ring · Sin pegamento · Rectificable</td><td>Adhesivo químico · Irreversible</td></tr>
+            <tr><td>Resistencia al impacto</td><td class="col-win">30× mayor que PVC</td><td>Quebradizo en frío</td></tr>
+            <tr><td>Temperatura</td><td class="col-win">Hasta 90 °C continuo</td><td>Se deforma con agua caliente</td></tr>
+            <tr><td>Interior</td><td class="col-win">Liso · Antiadherente · No se tapa</td><td>Se vuelve poroso con el tiempo</td></tr>
+            <tr><td>Heladas</td><td class="col-win">Absorbe la expansión sin romperse</td><td>Se quiebra ante heladas severas</td></tr>
+          </table>
+        </div>
+      </div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     TAB 6: MAYGAS
+     ═══════════════════════════════════════════════ -->
+<div class="brand-panel" id="tab-maygas">
+  <div class="brand-header">
+    <div class="brand-logo">
+      <img src="https://raw.githubusercontent.com/jonasconstrumega-dot/doctor_web/main/img.github/maygaslogo.png" alt="Maygas"/>
+    </div>
+    <div class="brand-meta">
+      <p class="brand-cats">Tuberías y Conexiones de Gas · PE-AL-PE</p>
+      <p class="brand-name">May<em>gas</em></p>
+    </div>
+  </div>
+
+  <div class="faq-list">
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+        <h3 class="faq-q-text">¿Qué pasa si el inspector ve un raspón en la capa amarilla exterior?</h3>
+        <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+      </div>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>Si el raspón supera el <strong>10% del espesor de la capa plástica</strong>, el caño será rechazado. La capa amarilla de PEAD protege el alma de acero contra la corrosión. Una raya profunda expone el metal a la humedad del muro, anulando la vida útil del sistema.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+        <h3 class="faq-q-text">¿Se puede usar cualquier marca de termofusora y boquilla?</h3>
+        <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+      </div>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p><strong>No.</strong> Se deben usar boquillas específicas para gas con geometría para sistema multicapa. Las boquillas comunes de agua (verdes o azules) no son aptas — las boquillas de gas tienen tolerancias milimétricas para no deformar el alma de acero interna del tubo Maygas durante el calentamiento.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+        <h3 class="faq-q-text">¿Cuáles son los tiempos de calentamiento estándar?</h3>
+        <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+      </div>
+      <div class="faq-a"><div class="faq-a-inner">
+        <div class="compare-table-wrap">
+          <table class="compare-table">
+            <tr><th>Diámetro</th><th>Calentamiento (260 °C)</th><th>Enfriamiento mínimo</th></tr>
+            <tr><td>20 mm</td><td>5 segundos</td><td rowspan="3" class="col-win">2 minutos sin girar ni esfuerzo</td></tr>
+            <tr><td>25 mm</td><td>7 segundos</td></tr>
+            <tr><td>32 mm</td><td>8 segundos</td></tr>
+          </table>
+        </div>
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+        <h3 class="faq-q-text">Ventajas de Maygas frente al Caño Epoxi Tradicional</h3>
+        <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+      </div>
+      <div class="faq-a"><div class="faq-a-inner">
+        <div class="compare-table-wrap">
+          <table class="compare-table">
+            <tr><th>Característica</th><th>Maygas (Termofusión)</th><th>Hierro Epoxi</th></tr>
+            <tr><td>Tipo de unión</td><td class="col-win">Fusión molecular — sin roscas ni selladores</td><td>Roscada con sellador — punto de microfugas</td></tr>
+            <tr><td>Corrosión</td><td class="col-win">Inmune a corrosión galvánica y corrientes vagabundas</td><td>Se oxida si el epoxi se raya o hay humedad</td></tr>
+            <tr><td>Flexibilidad</td><td class="col-win">Alta — absorbe tensiones sin quebrarse</td><td>Rígido — las roscas pueden ceder</td></tr>
+            <tr><td>Instalación</td><td class="col-win">Rápida y limpia — sin terrajas ni aceites</td><td>Lenta — requiere roscado manual y retoques</td></tr>
+            <tr><td>Vida útil</td><td class="col-win">+50 años garantizados</td><td>Variable según agresividad del suelo</td></tr>
+          </table>
+        </div>
+      </div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     TAB 7: HIDRO 3
+     ═══════════════════════════════════════════════ -->
+<div class="brand-panel" id="tab-hidro3">
+  <div class="brand-header">
+    <div class="brand-logo">
+      <img src="https://raw.githubusercontent.com/jonasconstrumega-dot/doctor_web/main/img.github/hidro3logo.png" alt="Hidro 3"/>
+    </div>
+    <div class="brand-meta">
+      <p class="brand-cats">Tuberías y Conexiones de Agua · PP-R</p>
+      <p class="brand-name">Hidro <em>3</em></p>
+    </div>
+  </div>
+
+  <div class="faq-list">
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+        <h3 class="faq-q-text">¿Hidro 3 es un sistema de rosca o de fusión?</h3>
+        <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+      </div>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>Es un sistema <strong>híbrido nativo (Unifusión)</strong>. Los caños marrones o verdes modernos de Hidro 3 permiten tanto ser roscados con terraja como ser unidos por termofusión con las boquillas milimétricas/pulgadas de Saladillo — una versatilidad única en el mercado.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+        <h3 class="faq-q-text">¿Por qué las boquillas de Hidro 3 son distintas a las demás marcas?</h3>
+        <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+      </div>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>Hidro 3 mide en <strong>pulgadas</strong> (½", ¾", 1") y no en milímetros como el resto. Para fusionar Hidro 3 es <strong>obligatorio usar las Boquillas Originales Hidro 3 de Saladillo</strong> — una boquilla estándar de 20 mm no encastrará correctamente en un caño de ½".</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+        <h3 class="faq-q-text">¿Por qué las roscas plásticas se barren al unirlas con piezas de bronce?</h3>
+        <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+      </div>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>Porque el bronce tiene roscas <strong>cónicas</strong> y el plástico es <strong>cilíndrico</strong>. Si se aprieta de más una pieza macho de bronce dentro de una hembra de Hidro 3, la forma cónica actúa como cuña y raja el plástico. Para transiciones críticas (salidas de termotanque), Hidro 3 fabrica accesorios con <strong>inserto metálico incorporado de fábrica</strong>.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+        <h3 class="faq-q-text">Ventajas de Hidro 3 frente a la tubería verde tradicional</h3>
+        <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+      </div>
+      <div class="faq-a"><div class="faq-a-inner">
+        <div class="compare-table-wrap">
+          <table class="compare-table">
+            <tr><th>Característica</th><th>Hidro 3</th><th>Tubería Verde</th></tr>
+            <tr><td>Sistema</td><td class="col-win">Híbrido Unifusión (rosca y fusión)</td><td>Solo termofusión</td></tr>
+            <tr><td>Medidas</td><td class="col-win">Pulgadas (mayor caudal interno)</td><td>Milimétrico (paredes más gruesas)</td></tr>
+            <tr><td>Reparación</td><td class="col-win">Hueco pequeño + terraja manual</td><td>Hueco grande + termofusora eléctrica</td></tr>
+            <tr><td>Protección UV</td><td class="col-win">Tricapa con capa negra nativa</td><td>Generalmente monocapa</td></tr>
+            <tr><td>Anti-verdín</td><td class="col-win">Capa negra bloquea luz → sin algas</td><td>Permite paso de luz → riesgo de algas</td></tr>
+          </table>
+        </div>
+      </div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     TAB 8: HIDROFLEX
+     ═══════════════════════════════════════════════ -->
+<div class="brand-panel" id="tab-hidroflex">
+  <div class="brand-header">
+    <div class="brand-logo">
+      <img src="https://raw.githubusercontent.com/jonasconstrumega-dot/doctor_web/main/img.github/hidroflexlogo.png" alt="HidroFlex"/>
+    </div>
+    <div class="brand-meta">
+      <p class="brand-cats">Calefacción por Piso Radiante · Tubo PEX</p>
+      <p class="brand-name">Hidro<em>Flex</em></p>
+    </div>
+  </div>
+
+  <div class="faq-list">
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+        <h3 class="faq-q-text">¿Por qué el piso radiante con HidroFlex es más eficiente que los radiadores?</h3>
+        <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+      </div>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>Consume hasta un <strong>20% menos de energía</strong> y distribuye mejor el calor. Los radiadores calientan por convección, acumulando el calor cerca del techo (zona inútil). El sistema HidroFlex calienta desde el suelo hacia arriba, manteniendo pies templados y temperatura ideal a la altura de las personas.</p>
+        <div class="info-box">HidroFlex requiere agua a solo <strong>35–40 °C</strong>, mientras que los radiadores necesitan agua a 70 °C — menor consumo de energía de caldera.</div>
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+        <h3 class="faq-q-text">¿Qué pasa si el caño se pincha durante la obra?</h3>
+        <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+      </div>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p><strong>Bajo el cemento no debe quedar ninguna unión.</strong> Si se perfora el tubo antes de volcar el hormigón, lo correcto es descartar ese circuito y recablear la serpentina desde el colector con un tramo entero de rollo nuevo. Si la losa ya está volcada, existen uniones mecánicas a compresión de máxima seguridad como último recurso.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+        <h3 class="faq-q-text">¿Qué es la "Memoria Térmica" del material PEX?</h3>
+        <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+      </div>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>Es una propiedad molecular exclusiva. Si durante la instalación el caño se dobla bruscamente y se "estrangula", <strong>no se descarta</strong>. Al aplicar calor controlado con una pistola de aire caliente, las moléculas recuperan su forma cilíndrica original y el caño recobra el <strong>100% de su resistencia mecánica</strong> sin quedar debilitado.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+        <h3 class="faq-q-text">¿El caño HidroFlex PEX sirve para instalación de agua corriente?</h3>
+        <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+      </div>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>Técnicamente soporta la presión, pero <strong>no es su uso recomendado</strong>. Al ser tan flexible, si se embutiera en una pared colgado de forma tradicional, el caño pandea o se deforma con la presión. Para agua en paredes, usar el sistema rígido <em>Hidro 3</em>. <strong>HidroFlex es exclusivo para instalarse horizontalmente sobre suelos o losas.</strong></p>
+      </div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     TAB 9: COVERTHOR
+     ═══════════════════════════════════════════════ -->
+<div class="brand-panel" id="tab-coverthor">
+  <div class="brand-header">
+    <div class="brand-logo">
+      <img src="https://raw.githubusercontent.com/jonasconstrumega-dot/doctor_web/main/img.github/Coverthor-logo.PNG" alt="Coverthor"/>
+    </div>
+    <div class="brand-meta">
+      <p class="brand-cats">Aislante Térmico para Cañerías · Polietileno</p>
+      <p class="brand-name">Cover<em>thor</em></p>
+    </div>
+  </div>
+
+  <div class="faq-list">
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+        <h3 class="faq-q-text">¿Para qué sirve en caños de agua fría si no transportan calor?</h3>
+        <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+      </div>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>Para evitar la <strong>condensación y las manchas de humedad en las paredes</strong>. Cuando el agua fría circula por el interior de un muro en verano, el caño "transpira" por el choque térmico con el ambiente. Esta humedad se traslada a los ladrillos y arruina la pintura o los azulejos. El Coverthor actúa como barrera impermeable que anula este fenómeno.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+        <h3 class="faq-q-text">¿Ayuda a ahorrar gas o electricidad?</h3>
+        <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+      </div>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>Sí. Al aislar los tramos de agua caliente desde el termotanque hasta las canillas y duchas, se minimiza la disipación térmica en el trayecto. El agua llega caliente mucho más rápido, reduciendo el consumo de gas y evitando desperdiciar agua fría en espera.</p>
+        <div class="info-box">Ahorro estimado: hasta <strong>80% de gas y agua</strong> en la espera hasta recibir agua caliente.</div>
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+        <h3 class="faq-q-text">¿Cómo evita que los caños se revienten en invierno?</h3>
+        <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+      </div>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>La estructura de <strong>celda cerrada del polietileno</strong> retiene la temperatura interna del fluido, impidiendo que el agua alcance el punto de congelación ante heladas severas. Cuando el agua congelada se expande, ejerce una presión interna que quiebra el plástico o el metal — el Coverthor actúa como escudo térmico preventivo.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+        <h3 class="faq-q-text">¿Se puede colocar en una cañería que ya está instalada?</h3>
+        <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+      </div>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>Sí. Las fundas (tiras tubulares cerradas de 2 metros) se pueden <strong>cortar longitudinalmente con un cúter</strong> para abrazar el caño ya colocado. Para sellar la unión y garantizar la impermeabilidad, se usa la cinta autoadhesiva <strong>Hidro 3 Band</strong>.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)" role="button" tabindex="0" aria-expanded="false">
+        <h3 class="faq-q-text">¿Cuál es la diferencia entre Coverthor común y Coverthor XT?</h3>
+        <span class="faq-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+      </div>
+      <div class="faq-a"><div class="faq-a-inner">
+        <div class="compare-table-wrap">
+          <table class="compare-table">
+            <tr><th>Característica</th><th>Coverthor Común</th><th>Coverthor XT</th></tr>
+            <tr><td>Uso</td><td>Interior / embutido en paredes</td><td class="col-win">Intemperie / exterior</td></tr>
+            <tr><td>Protección UV</td><td>Básica o sin protección</td><td class="col-win">Doble lámina de aluminio anti UV</td></tr>
+            <tr><td>Resistencia solar</td><td>Se degrada con el sol</td><td class="col-win">Bloquea completamente los rayos UV</td></tr>
+          </table>
+        </div>
+        <p>Los espesores disponibles van desde <strong>5 mm hasta 15 mm</strong>, con diámetros internos desde 3/8" hasta 4 pulgadas.</p>
+      </div></div>
+    </div>
+
+  </div>
+</div>
+
+</div><!-- /page-body -->
+
+<!-- ═══════════ JAVASCRIPT ════════════════════════════ -->
+<script>
+/* ── Acordeón ───────────────────────────────────────── */
+function toggle(btn) {
+  var item = btn.closest('.faq-item');
+  var isOpen = item.classList.contains('open');
+  /* Cierra todos en el mismo panel */
+  var panel = item.closest('.brand-panel');
+  panel.querySelectorAll('.faq-item.open').forEach(function(el){
+    el.classList.remove('open');
+    el.querySelector('.faq-q').setAttribute('aria-expanded','false');
+  });
+  if (!isOpen) {
+    item.classList.add('open');
+    btn.setAttribute('aria-expanded','true');
+  }
+}
+
+/* Teclado: Enter / Space abren el acordeón */
+document.addEventListener('keydown', function(e){
+  if ((e.key === 'Enter' || e.key === ' ') && e.target.classList.contains('faq-q')) {
+    e.preventDefault();
+    toggle(e.target);
+  }
+});
+
+/* ── Tabs ───────────────────────────────────────────── */
+document.querySelectorAll('.tab-btn').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    /* Botones */
+    document.querySelectorAll('.tab-btn').forEach(function(b){
+      b.classList.remove('active');
+      b.setAttribute('aria-selected','false');
+    });
+    this.classList.add('active');
+    this.setAttribute('aria-selected','true');
+    /* Paneles */
+    var target = 'tab-' + this.dataset.tab;
+    document.querySelectorAll('.brand-panel').forEach(function(p){
+      p.classList.remove('active');
+    });
+    document.getElementById(target).classList.add('active');
+    /* Scroll suave al inicio del contenido */
+    document.querySelector('.page-body').scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+
+/* ── URL hash navigation ────────────────────────────── */
+(function(){
+  var map = {
+    '#calef':'calef','#termo':'termo','#calorflat':'calorflat',
+    '#isolant':'isolant','#awaduct':'awaduct','#maygas':'maygas',
+    '#hidro3':'hidro3','#hidroflex':'hidroflex','#coverthor':'coverthor'
+  };
+  var hash = window.location.hash.toLowerCase();
+  if (map[hash]) {
+    var target = document.querySelector('[data-tab="'+map[hash]+'"]');
+    if (target) target.click();
+  }
+})();
+</script>
+
+</body>
+</html>
