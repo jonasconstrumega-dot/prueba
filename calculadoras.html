@@ -353,26 +353,296 @@ img{display:block;max-width:100%}
   .result-wrap,.termo-result-wrap{transition:none}
   .btn-calc:hover,.btn-wa:hover{transform:none}
 }
+
+/* ── EQUIPMENT TYPE INFO CARDS ────────────────────────────────────────────── */
+.equip-info-grid{display:flex;flex-direction:column;gap:10px;margin-bottom:4px}
+.equip-card{
+  display:flex;gap:14px;align-items:flex-start;
+  border-radius:12px;padding:14px 16px;
+  border:1.5px solid var(--border);
+  background:var(--surface);
+  transition:border-color .25s ease,box-shadow .25s ease;
+}
+.equip-card:hover{border-color:var(--cel);box-shadow:0 3px 14px rgba(61,168,188,.1)}
+.equip-card--tb{border-left:3px solid var(--nar)}
+.equip-card--el{border-left:3px solid var(--cel)}
+.equip-card--mob{border-left:3px solid #9ca3af}
+.equip-card-icon{
+  width:36px;height:36px;border-radius:9px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;line-height:1;
+}
+.equip-card--tb  .equip-card-icon{background:rgba(248,164,19,.12)}
+.equip-card--el  .equip-card-icon{background:rgba(61,168,188,.12)}
+.equip-card--mob .equip-card-icon{background:rgba(156,163,175,.12)}
+.equip-card-body{}
+.equip-card-title{
+  font-size:.82rem;font-weight:800;color:var(--osc);
+  margin-bottom:3px;line-height:1.3;
+}
+.equip-card--tb  .equip-card-title{color:var(--nar2)}
+.equip-card--el  .equip-card-title{color:var(--cel2)}
+.equip-card--mob .equip-card-title{color:#374151}
+.equip-card-desc{font-size:.76rem;color:var(--mid);line-height:1.55}
+.equip-card-badge{
+  display:inline-flex;align-items:center;gap:4px;
+  font-size:.6rem;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;padding:2px 8px;border-radius:50px;
+  margin-top:6px;
+}
+.equip-card--tb  .equip-card-badge{background:rgba(248,164,19,.1);color:var(--nar2);border:1px solid rgba(248,164,19,.25)}
+.equip-card--el  .equip-card-badge{background:rgba(61,168,188,.1);color:var(--cel2);border:1px solid rgba(61,168,188,.25)}
+.equip-card--mob .equip-card-badge{background:rgba(156,163,175,.1);color:#4b5563;border:1px solid rgba(156,163,175,.25)}
+
+/* ── UPGRADED BOOL ROW (single question) ──────────────────────────────────── */
+.bool-row-single{
+  display:flex;flex-direction:column;gap:12px;
+  background:linear-gradient(135deg,#f8fbff 0%,#f0f6fa 100%);
+  border:2px solid var(--border);border-radius:14px;
+  padding:18px 18px 16px;
+  transition:border-color .3s ease;
+}
+.bool-row-single.sel-si{border-color:var(--nar);background:linear-gradient(135deg,#fffbf2 0%,#fef3d8 100%)}
+.bool-row-single.sel-no{border-color:var(--cel);background:linear-gradient(135deg,#f0fbfd 0%,#e4f5f9 100%)}
+.bool-row-single .bool-q strong{
+  font-size:.9rem;font-weight:700;color:var(--osc);
+  display:block;line-height:1.4;
+}
+.bool-row-single .bool-q small{
+  display:block;font-size:.7rem;color:var(--soft);
+  margin-top:4px;line-height:1.4;
+}
+.bool-btns-large{display:flex;gap:10px}
+.bool-btns-large input[type="radio"]{display:none}
+.bool-btns-large label{
+  flex:1;display:flex;align-items:center;justify-content:center;gap:7px;
+  padding:11px 16px;border-radius:10px;font-size:.84rem;font-weight:700;
+  cursor:pointer;border:2px solid var(--border);
+  color:var(--soft);background:var(--surface);
+  transition:all .25s ease;user-select:none;
+}
+.bool-btns-large label .btn-ico{font-size:1.1rem;line-height:1}
+.bool-btns-large input:checked+label{
+  border-color:var(--nar);color:var(--nar2);
+  background:rgba(248,164,19,.08);
+  box-shadow:0 2px 10px rgba(248,164,19,.2);
+  transform:translateY(-1px);
+}
+.bool-btns-large input[value="no"]:checked+label{
+  border-color:var(--cel);color:var(--cel2);
+  background:rgba(61,168,188,.08);
+  box-shadow:0 2px 10px rgba(61,168,188,.15);
+}
+@media(max-width:480px){
+  .equip-card{gap:10px;padding:12px 13px}
+  .equip-card-icon{width:30px;height:30px;font-size:.95rem}
+  .bool-btns-large{flex-direction:column}
+}
+
+
+/* ════════════════════════════════════════════════════
+   TERMO — GAS CHOICE CARDS (Paso 1 upgrade)
+   ═══════════════════════════════════════════════════ */
+
+/* Wrapper replaces .toggle-group for the gas question */
+.gas-choice-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:12px;
+}
+.gas-choice-grid input[type="radio"]{display:none}
+
+.gas-choice-label{
+  display:flex;flex-direction:column;align-items:flex-start;gap:8px;
+  padding:18px 16px;border-radius:13px;cursor:pointer;
+  border:2px solid var(--border);background:var(--surface);
+  transition:all .25s ease;user-select:none;position:relative;overflow:hidden;
+}
+.gas-choice-label::before{
+  content:'';position:absolute;inset:0;opacity:0;
+  border-radius:inherit;transition:opacity .25s ease;
+}
+/* Gas option tints */
+.gas-choice-label--gas::before  {background:linear-gradient(135deg,rgba(248,164,19,.06) 0%,rgba(248,164,19,.02) 100%)}
+.gas-choice-label--el::before   {background:linear-gradient(135deg,rgba(61,168,188,.06) 0%,rgba(61,168,188,.02) 100%)}
+
+/* Checked states */
+.gas-choice-grid input[value="si"]:checked + .gas-choice-label--gas{
+  border-color:var(--nar);
+  box-shadow:0 0 0 3px rgba(248,164,19,.12), 0 4px 16px rgba(248,164,19,.14);
+}
+.gas-choice-grid input[value="si"]:checked + .gas-choice-label--gas::before{opacity:1}
+.gas-choice-grid input[value="no"]:checked + .gas-choice-label--el{
+  border-color:var(--cel);
+  box-shadow:0 0 0 3px rgba(61,168,188,.12), 0 4px 16px rgba(61,168,188,.12);
+}
+.gas-choice-grid input[value="no"]:checked + .gas-choice-label--el::before{opacity:1}
+
+/* Hover (unchecked) */
+.gas-choice-label:hover{
+  border-color:var(--border2);
+  transform:translateY(-2px);
+  box-shadow:0 4px 14px rgba(0,0,0,.07);
+}
+
+/* Check indicator badge */
+.gas-check{
+  position:absolute;top:10px;right:10px;
+  width:18px;height:18px;border-radius:50%;
+  border:2px solid var(--border);background:var(--bg);
+  display:flex;align-items:center;justify-content:center;
+  transition:all .25s ease;
+}
+.gas-check svg{width:10px;height:10px;opacity:0;transition:opacity .2s ease}
+.gas-choice-grid input[value="si"]:checked + .gas-choice-label--gas .gas-check{
+  background:var(--nar);border-color:var(--nar);
+}
+.gas-choice-grid input[value="si"]:checked + .gas-choice-label--gas .gas-check svg{opacity:1}
+.gas-choice-grid input[value="no"]:checked + .gas-choice-label--el .gas-check{
+  background:var(--cel);border-color:var(--cel);
+}
+.gas-choice-grid input[value="no"]:checked + .gas-choice-label--el .gas-check svg{opacity:1}
+
+/* Inner content */
+.gas-choice-ico{
+  font-size:1.6rem;line-height:1;
+  padding:8px;border-radius:10px;background:var(--bg);
+  border:1px solid var(--border);transition:all .25s ease;
+}
+.gas-choice-grid input[value="si"]:checked + .gas-choice-label--gas .gas-choice-ico{
+  background:rgba(248,164,19,.12);border-color:rgba(248,164,19,.25);
+}
+.gas-choice-grid input[value="no"]:checked + .gas-choice-label--el .gas-choice-ico{
+  background:rgba(61,168,188,.12);border-color:rgba(61,168,188,.25);
+}
+.gas-choice-title{
+  font-size:.86rem;font-weight:800;color:var(--osc);line-height:1.25;
+}
+.gas-choice-grid input[value="si"]:checked + .gas-choice-label--gas .gas-choice-title{color:var(--nar2)}
+.gas-choice-grid input[value="no"]:checked + .gas-choice-label--el .gas-choice-title{color:var(--cel2)}
+.gas-choice-desc{
+  font-size:.71rem;color:var(--soft);line-height:1.5;
+}
+.gas-choice-tag{
+  display:inline-flex;align-items:center;gap:4px;
+  font-size:.6rem;font-weight:700;letter-spacing:.07em;
+  text-transform:uppercase;padding:2px 8px;border-radius:50px;
+  background:var(--bg2);border:1px solid var(--border);color:var(--soft);
+  transition:all .25s ease;margin-top:2px;
+}
+.gas-choice-grid input[value="si"]:checked + .gas-choice-label--gas .gas-choice-tag{
+  background:rgba(248,164,19,.1);border-color:rgba(248,164,19,.3);color:var(--nar2);
+}
+.gas-choice-grid input[value="no"]:checked + .gas-choice-label--el .gas-choice-tag{
+  background:rgba(61,168,188,.1);border-color:rgba(61,168,188,.3);color:var(--cel2);
+}
+
+/* ════════════════════════════════════════════════════
+   TERMO — PERSONAS SELECT (Paso 2 upgrade)
+   ═══════════════════════════════════════════════════ */
+
+/* Visual persons strip — replaces or complements the select */
+.personas-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:0;
+}
+.personas-grid input[type="radio"]{display:none}
+
+.pers-label{
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  padding:16px 10px 14px;border-radius:12px;cursor:pointer;
+  border:2px solid var(--border);background:var(--surface);
+  transition:all .25s ease;user-select:none;text-align:center;
+  position:relative;
+}
+.pers-label:hover{
+  border-color:var(--border2);transform:translateY(-2px);
+  box-shadow:0 4px 14px rgba(0,0,0,.07);
+}
+.personas-grid input:checked + .pers-label{
+  border-color:var(--cel);background:rgba(61,168,188,.06);
+  box-shadow:0 0 0 3px rgba(61,168,188,.12), 0 4px 16px rgba(61,168,188,.1);
+}
+.pers-icons{font-size:1.2rem;line-height:1;letter-spacing:2px;margin-bottom:2px}
+.pers-range{
+  font-size:.8rem;font-weight:800;color:var(--osc);line-height:1;
+}
+.personas-grid input:checked + .pers-label .pers-range{color:var(--cel2)}
+.pers-hint{font-size:.64rem;color:var(--soft);line-height:1.3}
+.pers-check{
+  position:absolute;top:7px;right:7px;
+  width:15px;height:15px;border-radius:50%;
+  border:1.5px solid var(--border);background:var(--bg);
+  display:flex;align-items:center;justify-content:center;
+  transition:all .2s ease;
+}
+.pers-check svg{width:8px;height:8px;opacity:0;transition:opacity .2s ease}
+.personas-grid input:checked + .pers-label .pers-check{
+  background:var(--cel);border-color:var(--cel);
+}
+.personas-grid input:checked + .pers-label .pers-check svg{opacity:1}
+
+/* Keep original select hidden but synced (accessibility fallback) */
+.select-wrap--hidden{display:none}
+
+/* ════════════════════════════════════════════════════
+   TERMO — CONTEXT HINT between Paso 1 and Paso 2
+   ═══════════════════════════════════════════════════ */
+.gas-context-hint{
+  display:none;
+  align-items:center;gap:10px;
+  padding:11px 14px;border-radius:10px;
+  font-size:.76rem;color:var(--mid);line-height:1.4;
+  margin-top:0;
+}
+.gas-context-hint.visible{display:flex}
+.gas-context-hint--gas{background:rgba(248,164,19,.07);border:1px solid rgba(248,164,19,.2)}
+.gas-context-hint--el {background:rgba(61,168,188,.07);border:1px solid rgba(61,168,188,.18)}
+.gas-context-hint-ico{font-size:1.1rem;flex-shrink:0}
+.gas-context-hint strong{font-weight:700;color:var(--osc)}
+
+/* ════════════════════════════════════════════════════
+   BTN-CALC unified upgrade (both calculators)
+   ═══════════════════════════════════════════════════ */
+.btn-calc{
+  width:100%;
+  background:linear-gradient(135deg,var(--nar) 0%,var(--nar2) 100%);
+  color:#fff;font-size:.88rem;font-weight:800;letter-spacing:.07em;
+  text-transform:uppercase;padding:16px;border-radius:14px;
+  border:none;cursor:pointer;transition:all .28s ease;
+  margin-top:8px;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  box-shadow:0 4px 20px rgba(248,164,19,.28);
+  position:relative;overflow:hidden;
+}
+.btn-calc::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,.08) 0%,transparent 100%);
+  pointer-events:none;
+}
+.btn-calc:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 30px rgba(248,164,19,.42);
+}
+.btn-calc:active{transform:translateY(0);box-shadow:0 2px 10px rgba(248,164,19,.3)}
+.btn-calc svg{width:18px;height:18px;flex-shrink:0}
+
+@media(max-width:480px){
+  .gas-choice-grid{grid-template-columns:1fr}
+  .personas-grid{grid-template-columns:1fr}
+  .pers-icons{font-size:1rem}
+}
+
 </style>
 </head>
 <body>
 
 <!-- TOPBAR -->
 <div class="topbar">
-  <a href="construmega-home.html" class="btn-back">
+  <a href="index.html" class="btn-back">
     <svg viewBox="0 0 14 14" fill="none">
       <path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="2.2"
             stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
     Volver al Inicio
   </a>
-<a href="faq.html" class="btn-back" style="margin-left: 20px; display: inline-flex; align-items: center; gap: 6px;">
-    <svg viewBox="0 0 14 14" fill="none" style="width: 14px; height: 14px;">
-        <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.5"/>
-        <path d="M5.5 5.5a1.5 1.5 0 1 1 2.5 1.2c-.5.4-.5.8-.5 1.3 M7 9.5h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-    </svg>
-    Preguntas Frecuentes
-</a>
   <span class="topbar-brand">ConstruMega <em>·</em> Simuladores</span>
 </div>
 
@@ -434,37 +704,58 @@ img{display:block;max-width:100%}
     <p class="hint">Altura estándar aplicada: 2,70 m</p>
   </div>
 
-  <!-- Card filtros -->
+  <!-- Card filtros — Paso 2 rediseñado -->
   <div class="card">
     <p class="card-eyebrow">Paso 2</p>
-    <p class="card-title"><span class="step">?</span>Características del ambiente</p>
+    <p class="card-title"><span class="step">💡</span>Tipos de equipos disponibles</p>
 
-    <div class="bool-row" id="br-dorm">
-      <div class="bool-q">
-        <strong>¿Se instala en dormitorio o baño?</strong>
-        <small>Por normativa, estos ambientes requieren Tiro Balanceado obligatorio</small>
-      </div>
-      <div class="bool-btns">
-        <input type="radio" name="c-dorm" id="cd-si" value="si"/>
-        <label for="cd-si">SÍ</label>
-        <input type="radio" name="c-dorm" id="cd-no" value="no"/>
-        <label for="cd-no">NO</label>
-      </div>
-    </div>
+    <!-- Bloques explicativos de cada tipo de calefactor -->
+    <div class="equip-info-grid">
 
-    <div class="bool-row" id="br-pared">
-      <div class="bool-q">
-        <strong>¿El ambiente tiene pared al exterior?</strong>
-        <small>Necesaria para instalar el caño de salida de gases del Tiro Balanceado</small>
+      <div class="equip-card equip-card--tb">
+        <div class="equip-card-icon">🔥</div>
+        <div class="equip-card-body">
+          <p class="equip-card-title">CON Salida al Exterior — Tiro Balanceado a Gas</p>
+          <p class="equip-card-desc">Máxima seguridad y potencia constante. Toman y expulsan el aire hacia afuera, siendo los únicos 100% seguros para dormitorios y baños. Requieren instalación fija a la pared por un gasista.</p>
+          <span class="equip-card-badge">✔ Orbis · Coppens · Volcán · Emege</span>
+        </div>
       </div>
-      <div class="bool-btns">
+
+      <div class="equip-card equip-card--el">
+        <div class="equip-card-icon">⚡</div>
+        <div class="equip-card-body">
+          <p class="equip-card-title">SIN Salida al Exterior — Eléctricos</p>
+          <p class="equip-card-desc">Calor inmediato y práctico. No queman combustible ni generan gases. Sin obras ni roturas de pared: solo los recibís, los enchufás y los movés al ambiente que quieras.</p>
+          <span class="equip-card-badge">✔ Calorflat · Vytro</span>
+        </div>
+      </div>
+
+      <div class="equip-card equip-card--mob">
+        <div class="equip-card-icon">🔄</div>
+        <div class="equip-card-body">
+          <p class="equip-card-title">SIN Salida al Exterior — Convector Móvil a Gas</p>
+          <p class="equip-card-desc">Al no tener salida al exterior, incorporan un doble sistema de seguridad: la válvula de seguridad corta el gas si la llama se apaga accidentalmente, y el analizador de atmósfera corta el equipo si sube el CO₂ en el ambiente. Aun así, su uso no está establecido para dormitorios o baños.</p>
+          <span class="equip-card-badge">⚠ No apto para dormitorios ni baños</span>
+        </div>
+      </div>
+
+    </div><!-- /equip-info-grid -->
+
+    <!-- Única pregunta: pared exterior -->
+    <div class="bool-row-single" id="br-pared">
+      <div class="bool-q">
+        <strong>En el ambiente que deseás colocar el equipo de calefacción ¿Contás con pared al exterior?</strong>
+        <small>La pared exterior es necesaria para instalar el caño de salida de gases del Tiro Balanceado.</small>
+      </div>
+      <div class="bool-btns-large">
         <input type="radio" name="c-pared" id="cp-si" value="si"/>
-        <label for="cp-si">SÍ</label>
+        <label for="cp-si"><span class="btn-ico">🧱</span> SÍ, tengo pared exterior</label>
         <input type="radio" name="c-pared" id="cp-no" value="no"/>
-        <label for="cp-no">NO</label>
+        <label for="cp-no"><span class="btn-ico">🚫</span> NO, no tengo</label>
       </div>
     </div>
-  </div>
+
+  </div><!-- /card paso 2 -->
 
   <button class="btn-calc" onclick="calcCalef()">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
@@ -515,41 +806,88 @@ img{display:block;max-width:100%}
      ═══════════════════════════════════════════════════ -->
 <div class="calc-panel" id="panel-termo">
 
-  <!-- Card conexión gas -->
+  <!-- Card conexión gas — redesigned -->
   <div class="card">
     <p class="card-eyebrow">Paso 1</p>
-    <p class="card-title"><span class="step">⚡</span>¿Tenés conexión a gas?</p>
-    <div class="toggle-group">
-      <div class="toggle-opt">
-        <input type="radio" name="t-gas" id="tg-si" value="si"/>
-        <label for="tg-si">
-          <span class="opt-icon">🔥</span>
-          <span>Sí, tengo gas</span>
-        </label>
-      </div>
-      <div class="toggle-opt">
-        <input type="radio" name="t-gas" id="tg-no" value="no"/>
-        <label for="tg-no">
-          <span class="opt-icon">⚡</span>
-          <span>No, solo electricidad</span>
-        </label>
-      </div>
-    </div>
-  </div>
+    <p class="card-title"><span class="step">🔥</span>¿Tenés conexión a gas en tu hogar?</p>
 
-  <!-- Card personas -->
+    <div class="gas-choice-grid">
+
+      <input type="radio" name="t-gas" id="tg-si" value="si"/>
+      <label for="tg-si" class="gas-choice-label gas-choice-label--gas">
+        <span class="gas-check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l3 3 4-4" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="gas-choice-ico">🔥</span>
+        <span class="gas-choice-title">Sí, tengo gas</span>
+        <span class="gas-choice-desc">Gas natural o GLP disponible en la vivienda.</span>
+        <span class="gas-choice-tag">Mayor capacidad · 7 años garantía</span>
+      </label>
+
+      <input type="radio" name="t-gas" id="tg-no" value="no"/>
+      <label for="tg-no" class="gas-choice-label gas-choice-label--el">
+        <span class="gas-check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l3 3 4-4" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="gas-choice-ico">⚡</span>
+        <span class="gas-choice-title">No, solo electricidad</span>
+        <span class="gas-choice-desc">Sin red de gas. Solo conexión eléctrica 220V.</span>
+        <span class="gas-choice-tag">Fácil instalación · Sin obras</span>
+      </label>
+
+    </div><!-- /gas-choice-grid -->
+
+    <!-- Hint contextual: aparece al seleccionar -->
+    <div class="gas-context-hint gas-context-hint--gas" id="hint-gas">
+      <span class="gas-context-hint-ico">🛡️</span>
+      <span><strong>Termotanques a Gas Coppens</strong> — Garantía oficial de fábrica de 7 años. Alta recuperación o recuperación simultánea según tu consumo.</span>
+    </div>
+    <div class="gas-context-hint gas-context-hint--el" id="hint-el">
+      <span class="gas-context-hint-ico">⚡</span>
+      <span><strong>Termotanques Eléctricos Coppens</strong> — Sin instalación de gas. Aptos para baños. Temperatura regulable. Sin chimenea ni conductos.</span>
+    </div>
+
+  </div><!-- /card paso 1 -->
+
+  <!-- Card personas — redesigned -->
   <div class="card">
     <p class="card-eyebrow">Paso 2</p>
-    <p class="card-title"><span class="step">👥</span>Cantidad de personas en el hogar</p>
-    <div class="select-wrap">
-      <select id="t-personas">
-        <option value="" disabled selected>Seleccioná una opción…</option>
-        <option value="1-2">1 a 2 personas</option>
-        <option value="2-3">2 a 3 personas</option>
-        <option value="3-4">3 a 4 personas</option>
-      </select>
-    </div>
-  </div>
+    <p class="card-title"><span class="step">👥</span>¿Cuántas personas viven en el hogar?</p>
+
+    <!-- Visual card selector -->
+    <div class="personas-grid">
+
+      <input type="radio" name="t-personas-v" id="tp-12" value="1-2"/>
+      <label for="tp-12" class="pers-label">
+        <span class="pers-check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l3 3 4-4" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="pers-icons">👤👤</span>
+        <span class="pers-range">1 — 2</span>
+        <span class="pers-hint">personas</span>
+      </label>
+
+      <input type="radio" name="t-personas-v" id="tp-23" value="2-3"/>
+      <label for="tp-23" class="pers-label">
+        <span class="pers-check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l3 3 4-4" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="pers-icons">👤👤👤</span>
+        <span class="pers-range">2 — 3</span>
+        <span class="pers-hint">personas</span>
+      </label>
+
+      <input type="radio" name="t-personas-v" id="tp-34" value="3-4"/>
+      <label for="tp-34" class="pers-label">
+        <span class="pers-check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l3 3 4-4" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="pers-icons">👤👤👤👤</span>
+        <span class="pers-range">3 — 4</span>
+        <span class="pers-hint">personas</span>
+      </label>
+
+    </div><!-- /personas-grid -->
+
+    <!-- Hidden select kept in sync for calcTermo() compat -->
+    <select id="t-personas" class="select-wrap--hidden" aria-hidden="true">
+      <option value="" disabled selected></option>
+      <option value="1-2">1-2</option>
+      <option value="2-3">2-3</option>
+      <option value="3-4">3-4</option>
+    </select>
+
+  </div><!-- /card paso 2 -->
 
   <button class="btn-calc" onclick="calcTermo()">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
@@ -584,6 +922,29 @@ img{display:block;max-width:100%}
 
 <script>
 /* ════════════════════════════════════════════════════
+   TERMO — GAS HINT + PERSONAS SYNC
+   ═══════════════════════════════════════════════════ */
+(function(){
+  /* Gas choice → show contextual hint */
+  var hintGas = document.getElementById('hint-gas');
+  var hintEl  = document.getElementById('hint-el');
+  document.querySelectorAll('input[name="t-gas"]').forEach(function(r){
+    r.addEventListener('change', function(){
+      if(hintGas) hintGas.classList.toggle('visible', this.value === 'si');
+      if(hintEl)  hintEl.classList.toggle('visible',  this.value === 'no');
+    });
+  });
+
+  /* Personas visual cards → sync hidden select */
+  document.querySelectorAll('input[name="t-personas-v"]').forEach(function(r){
+    r.addEventListener('change', function(){
+      var sel = document.getElementById('t-personas');
+      if(sel) sel.value = this.value;
+    });
+  });
+})();
+
+/* ════════════════════════════════════════════════════
    TABS
    ═══════════════════════════════════════════════════ */
 document.querySelectorAll('.tab-btn').forEach(function(btn){
@@ -601,11 +962,11 @@ document.querySelectorAll('.tab-btn').forEach(function(btn){
 });
 
 /* ════════════════════════════════════════════════════
-   TOGGLE VISUAL FEEDBACK (Calef)
+   TOGGLE VISUAL FEEDBACK (Calef — solo pared exterior)
    ═══════════════════════════════════════════════════ */
-document.querySelectorAll('.bool-btns input[type="radio"]').forEach(function(r){
+document.querySelectorAll('#br-pared input[type="radio"]').forEach(function(r){
   r.addEventListener('change', function(){
-    var row = this.closest('.bool-row');
+    var row = this.closest('.bool-row-single');
     row.classList.remove('sel-si','sel-no');
     row.classList.add(this.value === 'si' ? 'sel-si' : 'sel-no');
   });
@@ -707,27 +1068,31 @@ function calcCalef(){
   var sup   = +(largo*ancho).toFixed(1);
   var kcal  = Math.round(vol*50);
 
-  var dormEl  = document.querySelector('input[name="c-dorm"]:checked');
+  /* Solo pregunta de pared exterior — dormitorio eliminado del flujo */
   var paredEl = document.querySelector('input[name="c-pared"]:checked');
-  var esDorm  = dormEl  ? dormEl.value ==='si' : false;
-  var tienePar= paredEl ? paredEl.value==='si' : false;
+  var tienePar = paredEl ? paredEl.value === 'si' : null;
+
+  if(tienePar === null){
+    errEl.textContent = '⚠ Indicá si el ambiente tiene pared al exterior para continuar.';
+    errEl.style.display = 'block';
+    resEl.classList.remove('open');
+    return;
+  }
+  errEl.style.display = 'none';
 
   var mainKeys=[], altKeys=[], noteHtml='';
 
-  if(esDorm){
-    if(kcal<2800)     { mainKeys=['cop2500tb','orb2500tb']; }
-    else if(kcal<=4200){ mainKeys=['orb3800tb','cop4000tb']; altKeys=['cop2500tb']; }
-    else               { mainKeys=['orb5000tbng','orb5000tbgris','cop6000tb']; altKeys=['cop4000tb']; }
-    noteHtml='<div class="warn-box"><strong>Seguridad obligatoria:</strong> En dormitorios y baños la normativa exige exclusivamente Tiro Balanceado. El caño coaxial toma el aire del exterior y expulsa los gases fuera, sin riesgo de monóxido de carbono.</div>';
-  } else if(!tienePar){
+  if(!tienePar){
+    /* SIN pared exterior → Eléctrico o Convector Móvil */
     if(sup<=30){ mainKeys=['cop2000el']; altKeys=['cop3440mob']; }
     else        { mainKeys=['cop3440mob']; altKeys=['cop2000el']; }
-    noteHtml='<div class="info-box"><strong>Sin pared exterior:</strong> No es posible instalar caño de gases. Te recomendamos la opción eléctrica (solo enchufe 220V) o la Hotspot Móvil a garrafa.</div>';
+    noteHtml='<div class="info-box"><strong>Sin pared exterior:</strong> No es posible instalar caño de salida de gases. Te recomendamos la opción eléctrica de bajo consumo (solo enchufe 220V) o el convector móvil a garrafa.</div>';
   } else {
-    if(kcal<2800)     { mainKeys=['cop2500tb','orb2500tb']; altKeys=['cop3440mob']; }
+    /* CON pared exterior → Tiro Balanceado según rango de kcal */
+    if(kcal<2800)      { mainKeys=['cop2500tb','orb2500tb']; altKeys=['cop3440mob']; }
     else if(kcal<=4200){ mainKeys=['orb3800tb','cop4000tb']; altKeys=['cop2500tb','cop3440mob']; }
     else               { mainKeys=['orb5000tbng','orb5000tbgris','cop6000tb']; altKeys=['cop4000tb']; }
-    noteHtml='<div class="info-box"><strong>Consejo:</strong> La potencia exacta puede variar según la altitud y zona climática de tu ciudad. Nuestro equipo técnico puede ajustar el modelo a tu localidad.</div>';
+    noteHtml='<div class="info-box"><strong>Tiro Balanceado recomendado:</strong> Con pared exterior podés instalar calefactores a gas de máxima eficiencia. La potencia exacta puede variar según la altitud y zona climática de tu ciudad.</div>';
   }
 
   document.getElementById('r-vol').innerHTML  = vol+'<em>m³</em>';
@@ -746,7 +1111,7 @@ function calcCalef(){
   } else { altsWrap.style.display='none'; }
 
   var primerProd = CALEF[mainKeys[0]];
-  var ctx = esDorm ? 'dormitorio/baño' : (!tienePar ? 'sin pared exterior' : 'sala con pared exterior');
+  var ctx = tienePar ? 'con pared al exterior' : 'sin pared al exterior';
   var waMsg = 'Hola ConstruMega! Usé la calculadora de calefactores. Mi ambiente: '+
     largo+'m × '+ancho+'m ('+vol+' m³, '+kcal+' kcal/h), '+ctx+'. '+
     'Me interesa: '+primerProd.wa+'. ¿Me pueden asesorar?';
