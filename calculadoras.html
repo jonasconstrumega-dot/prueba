@@ -630,6 +630,69 @@ img{display:block;max-width:100%}
   .pers-icons{font-size:1rem}
 }
 
+
+/* ════════════════════════════════════════════════════
+   STEP NAVIGATION (Calefactores)
+   ═══════════════════════════════════════════════════ */
+
+/* Step panes: only the active one is visible */
+.step-pane{display:none}
+.step-pane.active{display:block}
+
+/* Step indicator bar */
+.step-indicator{
+  display:flex;align-items:center;gap:0;
+  margin-bottom:24px;padding:0 4px;
+}
+.step-pip{
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+  flex:0 0 auto;
+}
+.pip-num{
+  width:30px;height:30px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.78rem;font-weight:800;
+  background:var(--bg2);border:2px solid var(--border);
+  color:var(--soft);transition:all .3s ease;
+}
+.step-pip.active .pip-num{
+  background:linear-gradient(135deg,var(--nar),var(--nar2));
+  border-color:var(--nar);color:#fff;
+  box-shadow:0 2px 10px rgba(248,164,19,.3);
+}
+.step-pip.done .pip-num{
+  background:var(--cel);border-color:var(--cel);color:#fff;
+}
+.pip-lbl{font-size:.6rem;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--soft);transition:color .3s ease}
+.step-pip.active .pip-lbl{color:var(--nar2)}
+.step-pip.done  .pip-lbl{color:var(--cel2)}
+
+.step-connector{
+  flex:1;height:2px;
+  background:var(--border);
+  border-radius:2px;margin:0 8px;margin-bottom:16px;
+  transition:background .3s ease;
+}
+.step-connector.done{
+  background:linear-gradient(90deg,var(--cel),var(--cel));
+}
+
+/* Back-to-step button */
+.btn-back-step{
+  display:inline-flex;align-items:center;gap:6px;
+  background:transparent;border:1.5px solid var(--border);
+  color:var(--soft);font-size:.76rem;font-weight:700;
+  padding:7px 14px;border-radius:8px;cursor:pointer;
+  margin-bottom:18px;transition:all .25s ease;
+  letter-spacing:.03em;
+}
+.btn-back-step:hover{
+  border-color:var(--cel);color:var(--cel2);
+  background:rgba(61,168,188,.06);
+}
+.btn-back-step svg{width:12px;height:12px;flex-shrink:0}
+
 </style>
 </head>
 <body>
@@ -681,7 +744,22 @@ img{display:block;max-width:100%}
      ═══════════════════════════════════════════════════ -->
 <div class="calc-panel active" id="panel-calef">
 
-  <!-- Card medidas -->
+  <!-- ── STEP INDICATOR ─────────────────────────────── -->
+  <div class="step-indicator" id="calef-step-indicator">
+    <div class="step-pip active" id="pip-1">
+      <span class="pip-num">1</span>
+      <span class="pip-lbl">Medidas</span>
+    </div>
+    <div class="step-connector"></div>
+    <div class="step-pip" id="pip-2">
+      <span class="pip-num">2</span>
+      <span class="pip-lbl">Ambiente</span>
+    </div>
+  </div>
+
+  <!-- ── STEP 1: MEDIDAS ─────────────────────────────── -->
+  <div class="step-pane active" id="calef-step-1">
+    <!-- Card medidas -->
   <div class="card">
     <p class="card-eyebrow">Paso 1</p>
     <p class="card-title"><span class="step">↔</span>Medidas del ambiente</p>
@@ -704,7 +782,28 @@ img{display:block;max-width:100%}
     <p class="hint">Altura estándar aplicada: 2,70 m</p>
   </div>
 
-  <!-- Card filtros — Paso 2 rediseñado -->
+    <button class="btn-calc" onclick="calefGoStep2()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+           stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+      Continuar al Paso 2
+    </button>
+    <p class="err" id="err-calef-step1" style="display:none">⚠ Completá el Largo y el Ancho para continuar.</p>
+  </div>
+
+  <!-- ── STEP 2: AMBIENTE + RESULTADO ───────────────── -->
+  <div class="step-pane" id="calef-step-2">
+
+    <button class="btn-back-step" onclick="calefGoStep1()">
+      <svg viewBox="0 0 14 14" fill="none">
+        <path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Volver al Paso 1
+    </button>
+
+    <!-- Card filtros — Paso 2 rediseñado -->
   <div class="card">
     <p class="card-eyebrow">Paso 2</p>
     <p class="card-title"><span class="step">💡</span>Tipos de equipos disponibles</p>
@@ -757,7 +856,7 @@ img{display:block;max-width:100%}
 
   </div><!-- /card paso 2 -->
 
-  <button class="btn-calc" onclick="calcCalef()">
+    <button class="btn-calc" onclick="calcCalef()">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
          stroke-linecap="round" stroke-linejoin="round">
       <rect x="4" y="2" width="16" height="20" rx="2"/>
@@ -798,6 +897,8 @@ img{display:block;max-width:100%}
       * Los resultados son meramente orientativos.
     </p>
   </div>
+
+  </div><!-- /calef-step-2 -->
 
 </div><!-- /panel-calef -->
 
@@ -943,6 +1044,59 @@ img{display:block;max-width:100%}
     });
   });
 })();
+
+
+/* ════════════════════════════════════════════════════
+   CALEF STEP NAVIGATION
+   ═══════════════════════════════════════════════════ */
+function calefGoStep2(){
+  var largo = parseFloat(document.getElementById('c-largo').value);
+  var ancho = parseFloat(document.getElementById('c-ancho').value);
+  var errEl = document.getElementById('err-calef-step1');
+
+  if(!largo || !ancho || largo <= 0 || ancho <= 0){
+    errEl.style.display = 'block';
+    return;
+  }
+  errEl.style.display = 'none';
+
+  /* Transition: hide step 1, show step 2 */
+  document.getElementById('calef-step-1').classList.remove('active');
+  document.getElementById('calef-step-2').classList.add('active');
+
+  /* Update step indicator */
+  var pip1 = document.getElementById('pip-1');
+  var pip2 = document.getElementById('pip-2');
+  var conn = document.querySelector('.step-connector');
+  pip1.classList.remove('active'); pip1.classList.add('done');
+  pip2.classList.add('active');
+  if(conn) conn.classList.add('done');
+
+  /* Smooth scroll to top of panel */
+  var panel = document.getElementById('panel-calef');
+  if(panel) panel.scrollIntoView({behavior:'smooth', block:'start'});
+
+  /* Also collapse any open result from a previous run */
+  var res = document.getElementById('res-calef');
+  if(res) res.classList.remove('open');
+}
+
+function calefGoStep1(){
+  /* Go back to step 1 */
+  document.getElementById('calef-step-2').classList.remove('active');
+  document.getElementById('calef-step-1').classList.add('active');
+
+  /* Reset step indicator */
+  var pip1 = document.getElementById('pip-1');
+  var pip2 = document.getElementById('pip-2');
+  var conn = document.querySelector('.step-connector');
+  pip1.classList.add('active'); pip1.classList.remove('done');
+  pip2.classList.remove('active');
+  if(conn) conn.classList.remove('done');
+
+  var panel = document.getElementById('panel-calef');
+  if(panel) panel.scrollIntoView({behavior:'smooth', block:'start'});
+}
 
 /* ════════════════════════════════════════════════════
    TABS
