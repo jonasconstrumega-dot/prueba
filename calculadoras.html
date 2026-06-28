@@ -54,6 +54,17 @@ img{display:block;max-width:100%}
 .btn-back:hover{background:rgba(248,164,19,.08);
   border-color:var(--nar);color:var(--nar)}
 .btn-back svg{width:13px;height:13px;flex-shrink:0}
+.btn-faq{
+  display:inline-flex;align-items:center;gap:7px;
+  background:rgba(61,168,188,.07);border:1.5px solid rgba(61,168,188,.3);
+  color:var(--cel2);font-size:.72rem;font-weight:700;
+  letter-spacing:.07em;text-transform:uppercase;
+  padding:7px 16px;border-radius:8px;transition:var(--t);
+  text-decoration:none;white-space:nowrap;
+}
+.btn-faq:hover{background:rgba(61,168,188,.14);
+  border-color:var(--cel);color:var(--cel)}
+.btn-faq svg{width:13px;height:13px;flex-shrink:0}
 
 /* ══ HERO ══════════════════════════════════════════════ */
 .hero{
@@ -707,6 +718,15 @@ img{display:block;max-width:100%}
     Volver al Inicio
   </a>
   <span class="topbar-brand">ConstruMega <em>·</em> Simuladores</span>
+  <a href="faq.html" class="btn-faq">
+    <svg viewBox="0 0 14 14" fill="none">
+      <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M5.5 5.5a1.5 1.5 0 013 .5c0 1-1.5 1.5-1.5 2.5"
+            stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <circle cx="7" cy="11" r=".6" fill="currentColor"/>
+    </svg>
+    Preguntas Frecuentes
+  </a>
 </div>
 
 <!-- HERO -->
@@ -833,7 +853,7 @@ img{display:block;max-width:100%}
         <div class="equip-card-icon">🔄</div>
         <div class="equip-card-body">
           <p class="equip-card-title">SIN Salida al Exterior — Convector Móvil a Gas</p>
-          <p class="equip-card-desc">Al no tener salida al exterior, incorporan un doble sistema de seguridad: la válvula de seguridad corta el gas si la llama se apaga accidentalmente, y el analizador de atmósfera corta el equipo si sube el CO₂ en el ambiente. Aun así, su uso no está establecido para dormitorios o baños.</p>
+          <p class="equip-card-desc">Al no tener salida al exterior, incorporan un doble sistema de seguridad: la válvula de seguridad corta el gas si la llama se apaga accidentalmente, y el analizador de atmósfera corta el equipo si sube el dióxido de carbono (CO₂) en el ambiente. Aun así, su uso no está establecido para dormitorios o baños.</p>
           <span class="equip-card-badge">⚠ No apto para dormitorios ni baños</span>
         </div>
       </div>
@@ -1425,7 +1445,7 @@ function calcTermo(){
 ['c-largo','c-ancho'].forEach(function(id){
   var el = document.getElementById(id);
   if(el) el.addEventListener('keydown',function(e){
-    if(e.key==='Enter') calcCalef();
+    if(e.key==='Enter') calefGoStep2();
   });
 });
 </script>
