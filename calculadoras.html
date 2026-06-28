@@ -767,22 +767,64 @@ img{display:block;max-width:100%}
 .btn-resultado:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(248,164,19,.42);}
 .btn-resultado svg{width:18px;height:18px;flex-shrink:0;}
 
+
+/* ══ HERO BAR — dark navy + grid ════════════════════════════════════════ */
+.hero-bar{
+  background:linear-gradient(135deg,#0a192f 0%,#0F2340 60%,#0a192f 100%);
+  position:relative;overflow:hidden;
+  padding:52px 28px 44px;text-align:center;
+}
+/* Technical grid overlay */
+.hero-bar::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(101,187,204,.06) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(101,187,204,.06) 1px,transparent 1px);
+  background-size:40px 40px;
+  pointer-events:none;
+}
+/* Radial glow centre */
+.hero-bar::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 80% at 50% 50%,
+    rgba(101,187,204,.08) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-bar > *{position:relative;z-index:1}
+.hero-eyebrow{
+  font-size:.6rem;font-weight:700;letter-spacing:.28em;
+  text-transform:uppercase;color:#F8A413;
+  margin-bottom:12px;
+}
+.hero-tt{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:clamp(2rem,5vw,3.2rem);font-weight:900;
+  color:#fff;line-height:1.1;letter-spacing:-.02em;
+  text-shadow:0 2px 32px rgba(0,0,0,.4);
+  margin-bottom:10px;
+}
+.hero-tt em{font-style:normal;color:#65BBCC}
+.hero-sub{
+  font-size:.88rem;color:rgba(255,255,255,.58);
+  max-width:440px;margin:0 auto;line-height:1.6;
+}
+
 </style>
 </head>
 <body>
 
 <!-- TOPBAR -->
 <div class="topbar">
-  <a href="index.html" class="btn-back">
-    <svg viewBox="0 0 14 14" fill="none">
+  <a href="index.html" class="btn-back" style="text-decoration:none">
+    <svg viewBox="0 0 14 14" fill="none" aria-hidden="true">
       <path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="2.2"
             stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
-    Volver al Inicio
+    ‹ Volver al Inicio
   </a>
   <span class="topbar-brand">ConstruMega <em>·</em> Simuladores</span>
-  <a href="faq.html" class="btn-faq">
-    <svg viewBox="0 0 14 14" fill="none">
+  <a href="faq.html" class="btn-faq" style="text-decoration:none">
+    <svg viewBox="0 0 14 14" fill="none" aria-hidden="true">
       <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.6"/>
       <path d="M5.5 5.5a1.5 1.5 0 013 .5c0 1-1.5 1.5-1.5 2.5"
             stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
@@ -794,6 +836,7 @@ img{display:block;max-width:100%}
 
 <!-- HERO -->
 <div class="hero-bar">
+  <p class="hero-eyebrow">— HERRAMIENTAS TÉCNICAS GRATUITAS —</p>
   <h1 class="hero-tt">Centro de <em>Calculadoras</em></h1>
   <p class="hero-sub">Encontrá el equipo ideal para tu hogar o proyecto en segundos.</p>
 </div>
@@ -1349,14 +1392,14 @@ function calcCalef(){
   var mainKeys=[], altKeys=[], noteHtml='';
 
   if(!tienePar){
-    /* SIN pared exterior → Eléctrico o Convector Móvil */
+    /* SIN pared exterior → Eléctrico principal, Convector Móvil como alternativa */
     if(sup<=30){ mainKeys=['cop2000el']; altKeys=['cop3440mob']; }
     else        { mainKeys=['cop3440mob']; altKeys=['cop2000el']; }
     noteHtml='<div class="info-box"><strong>Sin pared exterior:</strong> No es posible instalar caño de salida de gases. Te recomendamos la opción eléctrica de bajo consumo (solo enchufe 220V) o el convector móvil a garrafa.</div>';
   } else {
-    /* CON pared exterior → Tiro Balanceado según rango de kcal */
-    if(kcal<2800)      { mainKeys=['cop2500tb','orb2500tb']; altKeys=['cop3440mob']; }
-    else if(kcal<=4200){ mainKeys=['orb3800tb','cop4000tb']; altKeys=['cop2500tb','cop3440mob']; }
+    /* CON pared exterior → SOLO Tiro Balanceado. Hotspot Móvil EXCLUIDO. */
+    if(kcal<2800)      { mainKeys=['cop2500tb','orb2500tb']; altKeys=[]; }
+    else if(kcal<=4200){ mainKeys=['orb3800tb','cop4000tb']; altKeys=['cop2500tb']; }
     else               { mainKeys=['orb5000tbng','orb5000tbgris','cop6000tb']; altKeys=['cop4000tb']; }
     noteHtml='<div class="info-box"><strong>Tiro Balanceado recomendado:</strong> Con pared exterior podés instalar calefactores a gas de máxima eficiencia. La potencia exacta puede variar según la altitud y zona climática de tu ciudad.</div>';
   }
