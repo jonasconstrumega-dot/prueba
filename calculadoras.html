@@ -883,12 +883,12 @@ img{display:block;max-width:100%}
         </div>
         <div class="pared-btns">
           <button id="cp-si" class="pared-btn" data-val="si"
-                  onclick="calefSetPared('si')">
+                  onclick="calefSetAndGo('si')">
             <span class="pared-btn-ico">🧱</span>
             SÍ, tengo pared exterior
           </button>
           <button id="cp-no" class="pared-btn" data-val="no"
-                  onclick="calefSetPared('no')">
+                  onclick="calefSetAndGo('no')">
             <span class="pared-btn-ico">🚫</span>
             NO, no tengo
           </button>
@@ -898,15 +898,7 @@ img{display:block;max-width:100%}
         </p>
       </div>
 
-      <!-- Botón continuar — oculto hasta elegir pared -->
-      <button class="btn-continuar-medicion" id="btn-continuar-medicion"
-              onclick="calefGoMedicion()">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-             stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M5 12h14M12 5l7 7-7 7"/>
-        </svg>
-        CONTINUAR A LA MEDICIÓN DE AMBIENTE →
-      </button>
+
 
     </div><!-- /card paso 1 -->
   </div><!-- /calef-step-1 -->
@@ -1127,72 +1119,45 @@ img{display:block;max-width:100%}
 
 var calefParedChoice = null; /* 'si' | 'no' — set by pared buttons */
 
-/* Called when user clicks SÍ / NO pared buttons */
-function calefSetPared(val){
+/* Called directly by SÍ / NO buttons — saves choice AND jumps to Paso 2 */
+function calefSetAndGo(val){
   calefParedChoice = val;
 
-  /* Style the chosen button */
+  /* Visual feedback on chosen button */
   ['cp-si','cp-no'].forEach(function(id){
     var btn = document.getElementById(id);
     if(!btn) return;
     btn.classList.toggle('selected', btn.dataset.val === val);
   });
 
-  /* Reveal the "Continuar a Medición" button */
-  var cont = document.getElementById('btn-continuar-medicion');
-  if(cont){
-    cont.style.display  = 'flex';
-    cont.style.opacity  = '0';
-    cont.style.transform= 'translateY(8px)';
-    requestAnimationFrame(function(){
-      cont.style.transition = 'opacity .35s ease, transform .35s ease';
-      cont.style.opacity    = '1';
-      cont.style.transform  = 'translateY(0)';
-    });
-  }
-
-  /* Update pip: mark step 1 as done */
-  var pip1 = document.getElementById('pip-1');
-  if(pip1){ pip1.classList.add('done'); pip1.classList.remove('active'); }
-  var conn1 = document.getElementById('conn-1');
-  if(conn1) conn1.classList.add('done');
-  var pip2 = document.getElementById('pip-2');
-  if(pip2) pip2.classList.add('next');
-
-  /* Error message: clear if any */
-  var err = document.getElementById('err-calef-pared');
-  if(err) err.style.display = 'none';
-}
-
-/* Paso 1 → Paso 2 */
-function calefGoMedicion(){
-  if(!calefParedChoice){
-    var err = document.getElementById('err-calef-pared');
-    if(err){ err.style.display='block'; err.textContent='⚠ Seleccioná SÍ o NO antes de continuar.'; }
-    return;
-  }
-  /* Transition */
-  var step1 = document.getElementById('calef-step-1');
-  var step2 = document.getElementById('calef-step-2');
-  step1.classList.remove('active');
-  step2.classList.add('active');
-
-  /* Pip update */
-  var pip1=document.getElementById('pip-1'),pip2=document.getElementById('pip-2');
-  var conn1=document.getElementById('conn-1'),conn2=document.getElementById('conn-2');
-  if(pip1){pip1.classList.add('done');pip1.classList.remove('active');}
-  if(conn1) conn1.classList.add('done');
-  if(pip2){pip2.classList.add('active');pip2.classList.remove('next');}
-
-  /* Scroll */
-  var panel=document.getElementById('panel-calef');
-  if(panel) panel.scrollIntoView({behavior:'smooth',block:'start'});
-
-  /* Focus largo */
+  /* Brief visual pause so user sees the selected state, then transition */
   setTimeout(function(){
-    var l=document.getElementById('c-largo');
-    if(l) l.focus();
-  },400);
+
+    /* Hide step 1, show step 2 */
+    var step1 = document.getElementById('calef-step-1');
+    var step2 = document.getElementById('calef-step-2');
+    if(step1) step1.classList.remove('active');
+    if(step2) step2.classList.add('active');
+
+    /* Progress bar: step 1 done, step 2 active */
+    var pip1  = document.getElementById('pip-1');
+    var pip2  = document.getElementById('pip-2');
+    var conn1 = document.getElementById('conn-1');
+    if(pip1){ pip1.classList.add('done'); pip1.classList.remove('active'); }
+    if(conn1) conn1.classList.add('done');
+    if(pip2){ pip2.classList.add('active'); pip2.classList.remove('next','done'); }
+
+    /* Scroll to top of panel */
+    var panel = document.getElementById('panel-calef');
+    if(panel) panel.scrollIntoView({behavior:'smooth', block:'start'});
+
+    /* Focus largo input */
+    setTimeout(function(){
+      var l = document.getElementById('c-largo');
+      if(l) l.focus();
+    }, 350);
+
+  }, 160); /* 160ms: enough to see the button highlight */
 }
 
 /* Paso 2 → Paso 1 (back) */
@@ -1377,17 +1342,9 @@ function calcCalef(){
   var sup   = +(largo*ancho).toFixed(1);
   var kcal  = Math.round(vol*50);
 
-  /* Solo pregunta de pared exterior — dormitorio eliminado del flujo */
-  var paredEl = document.querySelector('input[name="c-pared"]:checked');
-  var tienePar = paredEl ? paredEl.value === 'si' : null;
-
-  if(tienePar === null){
-    errEl.textContent = '⚠ Indicá si el ambiente tiene pared al exterior para continuar.';
-    errEl.style.display = 'block';
-    resEl.classList.remove('open');
-    return;
-  }
-  errEl.style.display = 'none';
+  /* Lee la elección de pared del Paso 1 (guardada en variable global) */
+  var tienePar = (calefParedChoice === 'si');
+  /* calefParedChoice siempre está definido al llegar al Paso 2 */
 
   var mainKeys=[], altKeys=[], noteHtml='';
 
@@ -1428,6 +1385,15 @@ function calcCalef(){
     'https://wa.me/59168729729?text='+encodeURIComponent(waMsg);
 
   resEl.classList.add('open');
+
+  /* Progress bar: step 3 active */
+  var pip2r = document.getElementById('pip-2');
+  var pip3r = document.getElementById('pip-3');
+  var conn2r = document.getElementById('conn-2');
+  if(pip2r){ pip2r.classList.add('done'); pip2r.classList.remove('active'); }
+  if(conn2r) conn2r.classList.add('done');
+  if(pip3r){ pip3r.classList.add('active'); }
+
   setTimeout(function(){ resEl.scrollIntoView({behavior:'smooth',block:'nearest'}); },100);
 }
 
