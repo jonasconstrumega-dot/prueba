@@ -4,11 +4,12 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Calculadoras de Calefacción y Agua Caliente | ConstruMega Bolivia</title>
-<meta name="description" content="Calculá el calefactor ideal para tu ambiente y el termotanque Coppens según la cantidad de personas en tu hogar. Herramientas gratuitas de ConstruMega Bolivia."/>
-<meta name="robots" content="index,follow"/>
+<meta name="description" content="Calculá el calefactor ideal para tu ambiente y el termotanque Coppens según la cantidad de personas en tu hogar. Herramientas gratuitas de ConstruMega"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Barlow+Condensed:wght@700;900&display=swap');
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Barlow+Condensed:wght@700;900&display=swap');
 
 /* ══ TOKENS ════════════════════════════════════════════ */
@@ -643,66 +644,128 @@ img{display:block;max-width:100%}
 
 
 /* ════════════════════════════════════════════════════
-   STEP NAVIGATION (Calefactores)
+   3-STEP PROGRESS BAR
    ═══════════════════════════════════════════════════ */
-
-/* Step panes: only the active one is visible */
-.step-pane{display:none}
-.step-pane.active{display:block}
-
-/* Step indicator bar */
 .step-indicator{
-  display:flex;align-items:center;gap:0;
-  margin-bottom:24px;padding:0 4px;
+  display:flex;align-items:center;
+  margin-bottom:28px;padding:0 4px;
 }
 .step-pip{
-  display:flex;flex-direction:column;align-items:center;gap:4px;
+  display:flex;flex-direction:column;align-items:center;gap:5px;
   flex:0 0 auto;
 }
 .pip-num{
-  width:30px;height:30px;border-radius:50%;
+  width:32px;height:32px;border-radius:50%;
   display:flex;align-items:center;justify-content:center;
-  font-size:.78rem;font-weight:800;
-  background:var(--bg2);border:2px solid var(--border);
-  color:var(--soft);transition:all .3s ease;
+  font-size:.8rem;font-weight:800;
+  background:var(--bg2);border:2px solid var(--border);color:var(--soft);
+  transition:all .3s ease;
 }
 .step-pip.active .pip-num{
-  background:linear-gradient(135deg,var(--nar),var(--nar2));
+  background:linear-gradient(135deg,var(--nar),#e8920a);
   border-color:var(--nar);color:#fff;
-  box-shadow:0 2px 10px rgba(248,164,19,.3);
+  box-shadow:0 3px 12px rgba(248,164,19,.35);
 }
 .step-pip.done .pip-num{
   background:var(--cel);border-color:var(--cel);color:#fff;
 }
-.pip-lbl{font-size:.6rem;font-weight:700;letter-spacing:.08em;
-  text-transform:uppercase;color:var(--soft);transition:color .3s ease}
-.step-pip.active .pip-lbl{color:var(--nar2)}
-.step-pip.done  .pip-lbl{color:var(--cel2)}
-
+.step-pip.next .pip-num{
+  border-color:var(--border2);color:var(--mid);
+}
+.pip-lbl{
+  font-size:.58rem;font-weight:700;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--soft);white-space:nowrap;
+  transition:color .3s ease;
+}
+.step-pip.active .pip-lbl{ color:var(--nar2); }
+.step-pip.done   .pip-lbl{ color:var(--cel2); }
 .step-connector{
-  flex:1;height:2px;
-  background:var(--border);
-  border-radius:2px;margin:0 8px;margin-bottom:16px;
-  transition:background .3s ease;
+  flex:1;height:2px;border-radius:2px;
+  background:var(--border);margin:0 6px 18px;
+  transition:background .35s ease;
 }
-.step-connector.done{
-  background:linear-gradient(90deg,var(--cel),var(--cel));
-}
+.step-connector.done{ background:var(--cel); }
 
-/* Back-to-step button */
+/* Pared choice buttons (step 1 bottom) */
+.pared-btns{
+  display:flex;gap:10px;margin-top:4px;
+}
+.pared-btn{
+  flex:1;display:flex;align-items:center;justify-content:center;gap:8px;
+  padding:13px 16px;border-radius:11px;font-size:.86rem;font-weight:700;
+  cursor:pointer;border:2px solid var(--border);color:var(--soft);
+  background:var(--surface);transition:all .25s ease;
+  -webkit-tap-highlight-color:transparent;
+}
+.pared-btn:hover{border-color:var(--border2);transform:translateY(-1px);}
+.pared-btn.selected{
+  border-color:var(--nar);color:var(--nar2);
+  background:rgba(248,164,19,.07);
+  box-shadow:0 0 0 3px rgba(248,164,19,.12);
+}
+.pared-btn[data-val="no"].selected{
+  border-color:var(--cel);color:var(--cel2);
+  background:rgba(61,168,188,.07);
+  box-shadow:0 0 0 3px rgba(61,168,188,.1);
+}
+.pared-btn-ico{ font-size:1.15rem;line-height:1; }
+
+/* Continuar a medición button — hidden until pared chosen */
+.btn-continuar-medicion{
+  display:none;                           /* shown by JS after pared chosen */
+  width:100%;align-items:center;justify-content:center;gap:10px;
+  margin-top:16px;
+  background:linear-gradient(135deg,var(--nar) 0%,#e8920a 100%);
+  color:#fff;font-size:.9rem;font-weight:800;letter-spacing:.06em;
+  text-transform:uppercase;padding:16px;border-radius:14px;
+  border:none;cursor:pointer;transition:all .28s ease;
+  box-shadow:0 4px 20px rgba(248,164,19,.3);
+  position:relative;overflow:hidden;
+}
+.btn-continuar-medicion::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,.09) 0%,transparent 100%);
+  pointer-events:none;
+}
+.btn-continuar-medicion:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 28px rgba(248,164,19,.45);
+}
+.btn-continuar-medicion svg{width:18px;height:18px;flex-shrink:0;}
+
+/* Back button step 2 */
 .btn-back-step{
   display:inline-flex;align-items:center;gap:6px;
   background:transparent;border:1.5px solid var(--border);
   color:var(--soft);font-size:.76rem;font-weight:700;
   padding:7px 14px;border-radius:8px;cursor:pointer;
-  margin-bottom:18px;transition:all .25s ease;
+  margin-bottom:20px;transition:all .25s ease;
   letter-spacing:.03em;
 }
 .btn-back-step:hover{
   border-color:var(--cel);color:var(--cel2);
   background:rgba(61,168,188,.06);
 }
-.btn-back-step svg{width:12px;height:12px;flex-shrink:0}
+.btn-back-step svg{width:12px;height:12px;flex-shrink:0;}
+
+/* Result btn-calc (step 2) */
+.btn-resultado{
+  width:100%;
+  background:linear-gradient(135deg,var(--nar) 0%,#e8920a 100%);
+  color:#fff;font-size:.88rem;font-weight:800;letter-spacing:.07em;
+  text-transform:uppercase;padding:16px;border-radius:14px;
+  border:none;cursor:pointer;transition:all .28s ease;
+  margin-top:8px;display:flex;align-items:center;justify-content:center;gap:10px;
+  box-shadow:0 4px 20px rgba(248,164,19,.28);
+  position:relative;overflow:hidden;
+}
+.btn-resultado::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,.08) 0%,transparent 100%);
+  pointer-events:none;
+}
+.btn-resultado:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(248,164,19,.42);}
+.btn-resultado svg{width:18px;height:18px;flex-shrink:0;}
 
 </style>
 </head>
@@ -730,33 +793,22 @@ img{display:block;max-width:100%}
 </div>
 
 <!-- HERO -->
-<div class="hero">
-  <p class="hero-eye">Herramientas Técnicas Gratuitas</p>
-  <h1>Centro de <em>Calculadoras</em></h1>
-  <p>Elegí el simulador y encontrá el equipo ideal para tu proyecto en Bolivia.</p>
+<div class="hero-bar">
+  <h1 class="hero-tt">Centro de <em>Calculadoras</em></h1>
+  <p class="hero-sub">Encontrá el equipo ideal para tu hogar o proyecto en segundos.</p>
 </div>
 
 <!-- TABS -->
-<div class="tab-wrap">
-  <div class="tab-bar">
-    <button class="tab-btn active" data-tab="calef">
-      <span class="t-icon">🔥</span>
-      <span class="t-label">
-        Calefactores
-        <span class="t-sub">Por metros cúbicos</span>
-      </span>
-    </button>
-    <button class="tab-btn" data-tab="termo">
-      <span class="t-icon">🌡️</span>
-      <span class="t-label">
-        Agua Caliente
-        <span class="t-sub">Por personas · Coppens</span>
-      </span>
-    </button>
-  </div>
+<div class="tab-bar">
+  <button class="tab-btn active" data-tab="calef">
+    🔥 Calefactores <span class="tab-sub">Por m²</span>
+  </button>
+  <button class="tab-btn" data-tab="termo">
+    💧 Agua Caliente <span class="tab-sub">Por personas · Coppens</span>
+  </button>
 </div>
 
-<!-- BODY -->
+<!-- PAGE BODY -->
 <div class="page-body">
 
 <!-- ════════════════════════════════════════════════════
@@ -764,159 +816,181 @@ img{display:block;max-width:100%}
      ═══════════════════════════════════════════════════ -->
 <div class="calc-panel active" id="panel-calef">
 
-  <!-- ── STEP INDICATOR ─────────────────────────────── -->
-  <div class="step-indicator" id="calef-step-indicator">
+  <!-- ── PROGRESS BAR (3 steps) ──────────────────────── -->
+  <div class="step-indicator">
     <div class="step-pip active" id="pip-1">
       <span class="pip-num">1</span>
-      <span class="pip-lbl">Medidas</span>
+      <span class="pip-lbl">Productos</span>
     </div>
-    <div class="step-connector"></div>
+    <div class="step-connector" id="conn-1"></div>
     <div class="step-pip" id="pip-2">
       <span class="pip-num">2</span>
-      <span class="pip-lbl">Ambiente</span>
+      <span class="pip-lbl">Medidas</span>
+    </div>
+    <div class="step-connector" id="conn-2"></div>
+    <div class="step-pip" id="pip-3">
+      <span class="pip-num">3</span>
+      <span class="pip-lbl">Resultado</span>
     </div>
   </div>
 
-  <!-- ── STEP 1: MEDIDAS ─────────────────────────────── -->
+  <!-- ══════════════════════════════════════════════════
+       PASO 1 — Tipos de equipos + pregunta pared
+       ══════════════════════════════════════════════════ -->
   <div class="step-pane active" id="calef-step-1">
-    <!-- Card medidas -->
-  <div class="card">
-    <p class="card-eyebrow">Paso 1</p>
-    <p class="card-title"><span class="step">↔</span>Medidas del ambiente</p>
-    <div class="dims-grid">
-      <div class="field">
-        <span class="field-label">Largo</span>
-        <div class="input-wrap">
-          <input type="number" id="c-largo" placeholder="4.0" min="0.5" max="100" step="0.1"/>
-          <span class="unit-lbl">metros</span>
-        </div>
-      </div>
-      <div class="field">
-        <span class="field-label">Ancho</span>
-        <div class="input-wrap">
-          <input type="number" id="c-ancho" placeholder="3.5" min="0.5" max="100" step="0.1"/>
-          <span class="unit-lbl">metros</span>
-        </div>
-      </div>
-    </div>
-    <p class="hint">Altura estándar aplicada: 2,70 m</p>
-  </div>
 
-    <button class="btn-calc" onclick="calefGoStep2()">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
-           stroke-linecap="round" stroke-linejoin="round">
-        <path d="M5 12h14M12 5l7 7-7 7"/>
-      </svg>
-      Continuar al Paso 2
-    </button>
-    <p class="err" id="err-calef-step1" style="display:none">⚠ Completá el Largo y el Ancho para continuar.</p>
-  </div>
+    <div class="card">
+      <p class="card-eyebrow">Paso 1</p>
+      <p class="card-title"><span class="step">💡</span>Tipos de equipos disponibles</p>
 
-  <!-- ── STEP 2: AMBIENTE + RESULTADO ───────────────── -->
+      <!-- 3 tarjetas informativas -->
+      <div class="equip-info-grid">
+
+        <div class="equip-card equip-card--tb">
+          <div class="equip-card-icon">🔥</div>
+          <div class="equip-card-body">
+            <p class="equip-card-title">CON Salida al Exterior — Tiro Balanceado a Gas</p>
+            <p class="equip-card-desc">Máxima seguridad y potencia constante. Toman y expulsan el aire hacia afuera, siendo los únicos 100% seguros para dormitorios y baños. Requieren instalación fija a la pared por un gasista.</p>
+            <span class="equip-card-badge">✔ Orbis · Coppens · Volcán · Emege</span>
+          </div>
+        </div>
+
+        <div class="equip-card equip-card--el">
+          <div class="equip-card-icon">⚡</div>
+          <div class="equip-card-body">
+            <p class="equip-card-title">SIN Salida al Exterior — Eléctricos</p>
+            <p class="equip-card-desc">Calor inmediato y práctico. No queman combustible ni generan gases. Sin obras ni roturas de pared: solo los recibís, los enchufás y los movés al ambiente que quieras.</p>
+            <span class="equip-card-badge">✔ Calorflat · Vytro</span>
+          </div>
+        </div>
+
+        <div class="equip-card equip-card--mob">
+          <div class="equip-card-icon">🔄</div>
+          <div class="equip-card-body">
+            <p class="equip-card-title">SIN Salida al Exterior — Convector Móvil a Gas</p>
+            <p class="equip-card-desc">Al no tener salida al exterior, incorporan un doble sistema de seguridad: la válvula de seguridad corta el gas si la llama se apaga accidentalmente, y el analizador de atmósfera corta el equipo si sube el dióxido de carbono (CO₂) en el ambiente. Aun así, su uso no está establecido para dormitorios o baños.</p>
+            <span class="equip-card-badge">⚠ No apto para dormitorios ni baños</span>
+          </div>
+        </div>
+
+      </div><!-- /equip-info-grid -->
+
+      <!-- Pregunta: pared exterior -->
+      <div class="bool-row-single" id="br-pared" style="margin-top:20px">
+        <div class="bool-q">
+          <strong>En el ambiente que deseás colocar el equipo de calefacción ¿Contás con pared al exterior?</strong>
+          <small>La pared exterior es necesaria para instalar el caño de salida de gases del Tiro Balanceado.</small>
+        </div>
+        <div class="pared-btns">
+          <button id="cp-si" class="pared-btn" data-val="si"
+                  onclick="calefSetPared('si')">
+            <span class="pared-btn-ico">🧱</span>
+            SÍ, tengo pared exterior
+          </button>
+          <button id="cp-no" class="pared-btn" data-val="no"
+                  onclick="calefSetPared('no')">
+            <span class="pared-btn-ico">🚫</span>
+            NO, no tengo
+          </button>
+        </div>
+        <p class="err" id="err-calef-pared" style="display:none">
+          ⚠ Seleccioná SÍ o NO antes de continuar.
+        </p>
+      </div>
+
+      <!-- Botón continuar — oculto hasta elegir pared -->
+      <button class="btn-continuar-medicion" id="btn-continuar-medicion"
+              onclick="calefGoMedicion()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+        CONTINUAR A LA MEDICIÓN DE AMBIENTE →
+      </button>
+
+    </div><!-- /card paso 1 -->
+  </div><!-- /calef-step-1 -->
+
+  <!-- ══════════════════════════════════════════════════
+       PASO 2 — Medidas del ambiente
+       ══════════════════════════════════════════════════ -->
   <div class="step-pane" id="calef-step-2">
 
-    <button class="btn-back-step" onclick="calefGoStep1()">
+    <button class="btn-back-step" onclick="calefGoBack()">
       <svg viewBox="0 0 14 14" fill="none">
         <path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.8"
               stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
-      Volver al Paso 1
+      ← Volver al Paso 1
     </button>
 
-    <!-- Card filtros — Paso 2 rediseñado -->
-  <div class="card">
-    <p class="card-eyebrow">Paso 2</p>
-    <p class="card-title"><span class="step">💡</span>Tipos de equipos disponibles</p>
-
-    <!-- Bloques explicativos de cada tipo de calefactor -->
-    <div class="equip-info-grid">
-
-      <div class="equip-card equip-card--tb">
-        <div class="equip-card-icon">🔥</div>
-        <div class="equip-card-body">
-          <p class="equip-card-title">CON Salida al Exterior — Tiro Balanceado a Gas</p>
-          <p class="equip-card-desc">Máxima seguridad y potencia constante. Toman y expulsan el aire hacia afuera, siendo los únicos 100% seguros para dormitorios y baños. Requieren instalación fija a la pared por un gasista.</p>
-          <span class="equip-card-badge">✔ Orbis · Coppens · Volcán · Emege</span>
+    <div class="card">
+      <p class="card-eyebrow">Paso 2</p>
+      <p class="card-title"><span class="step">↔</span>Medidas del ambiente</p>
+      <div class="dims-grid">
+        <div class="field">
+          <span class="field-label">Largo</span>
+          <div class="input-wrap">
+            <input type="number" id="c-largo" placeholder="4.0"
+                   min="0.5" max="100" step="0.1"/>
+            <span class="unit-lbl">metros</span>
+          </div>
+        </div>
+        <div class="field">
+          <span class="field-label">Ancho</span>
+          <div class="input-wrap">
+            <input type="number" id="c-ancho" placeholder="3.5"
+                   min="0.5" max="100" step="0.1"/>
+            <span class="unit-lbl">metros</span>
+          </div>
         </div>
       </div>
+      <p class="hint">Altura estándar aplicada: 2,70 m</p>
 
-      <div class="equip-card equip-card--el">
-        <div class="equip-card-icon">⚡</div>
-        <div class="equip-card-body">
-          <p class="equip-card-title">SIN Salida al Exterior — Eléctricos</p>
-          <p class="equip-card-desc">Calor inmediato y práctico. No queman combustible ni generan gases. Sin obras ni roturas de pared: solo los recibís, los enchufás y los movés al ambiente que quieras.</p>
-          <span class="equip-card-badge">✔ Calorflat · Vytro</span>
-        </div>
+      <button class="btn-resultado" onclick="calcCalef()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="4" y="2" width="16" height="20" rx="2"/>
+          <line x1="9" y1="7" x2="15" y2="7"/>
+          <line x1="9" y1="11" x2="15" y2="11"/>
+          <line x1="9" y1="15" x2="13" y2="15"/>
+        </svg>
+        VER RESULTADO FINAL →
+      </button>
+      <p class="err" id="err-calef" style="display:none">
+        ⚠ Completá el Largo y el Ancho para calcular.
+      </p>
+    </div><!-- /card paso 2 -->
+
+    <!-- Resultado calef -->
+    <div class="result-wrap card" id="res-calef">
+      <div class="res-stats">
+        <div><span class="rs-lbl">Volumen estimado</span>
+             <span class="rs-val" id="r-vol">—<em>m³</em></span></div>
+        <div><span class="rs-lbl">Potencia requerida</span>
+             <span class="rs-val" id="r-kcal">—<em>kcal/h</em></span></div>
+        <div><span class="rs-lbl">Superficie</span>
+             <span class="rs-val" id="r-sup">—<em>m²</em></span></div>
       </div>
 
-      <div class="equip-card equip-card--mob">
-        <div class="equip-card-icon">🔄</div>
-        <div class="equip-card-body">
-          <p class="equip-card-title">SIN Salida al Exterior — Convector Móvil a Gas</p>
-          <p class="equip-card-desc">Al no tener salida al exterior, incorporan un doble sistema de seguridad: la válvula de seguridad corta el gas si la llama se apaga accidentalmente, y el analizador de atmósfera corta el equipo si sube el dióxido de carbono (CO₂) en el ambiente. Aun así, su uso no está establecido para dormitorios o baños.</p>
-          <span class="equip-card-badge">⚠ No apto para dormitorios ni baños</span>
-        </div>
+      <p style="font-size:.6rem;font-weight:700;letter-spacing:.14em;
+         text-transform:uppercase;color:var(--soft);margin-bottom:10px">
+        Producto recomendado para tu ambiente
+      </p>
+      <div id="r-main-cards"></div>
+      <div id="r-note-box"></div>
+      <div id="r-alts-section" style="display:none">
+        <p class="alt-lbl">También te puede interesar</p>
+        <div id="r-alt-cards"></div>
       </div>
-
-    </div><!-- /equip-info-grid -->
-
-    <!-- Única pregunta: pared exterior -->
-    <div class="bool-row-single" id="br-pared">
-      <div class="bool-q">
-        <strong>En el ambiente que deseás colocar el equipo de calefacción ¿Contás con pared al exterior?</strong>
-        <small>La pared exterior es necesaria para instalar el caño de salida de gases del Tiro Balanceado.</small>
-      </div>
-      <div class="bool-btns-large">
-        <input type="radio" name="c-pared" id="cp-si" value="si"/>
-        <label for="cp-si"><span class="btn-ico">🧱</span> SÍ, tengo pared exterior</label>
-        <input type="radio" name="c-pared" id="cp-no" value="no"/>
-        <label for="cp-no"><span class="btn-ico">🚫</span> NO, no tengo</label>
-      </div>
-    </div>
-
-  </div><!-- /card paso 2 -->
-
-    <button class="btn-calc" onclick="calcCalef()">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
-         stroke-linecap="round" stroke-linejoin="round">
-      <rect x="4" y="2" width="16" height="20" rx="2"/>
-      <line x1="9" y1="7" x2="15" y2="7"/>
-      <line x1="9" y1="11" x2="15" y2="11"/>
-      <line x1="9" y1="15" x2="13" y2="15"/>
-    </svg>
-    Ver Resultado de Potencia
-  </button>
-  <p class="err" id="err-calef">⚠ Completá largo y ancho para continuar.</p>
-
-  <!-- Resultado calef -->
-  <div class="result-wrap card" id="res-calef">
-    <div class="res-stats">
-      <div><span class="rs-lbl">Volumen estimado</span>
-           <span class="rs-val" id="r-vol">—<em>m³</em></span></div>
-      <div><span class="rs-lbl">Potencia requerida</span>
-           <span class="rs-val" id="r-kcal">—<em>kcal/h</em></span></div>
-      <div><span class="rs-lbl">Superficie</span>
-           <span class="rs-val" id="r-sup">—<em>m²</em></span></div>
-    </div>
-
-    <p style="font-size:.6rem;font-weight:700;letter-spacing:.14em;
-       text-transform:uppercase;color:var(--soft);margin-bottom:10px">
-      Producto recomendado para tu ambiente
-    </p>
-    <div id="r-main-cards"></div>
-    <div id="r-note-box"></div>
-    <div id="r-alts-section" style="display:none">
-      <p class="alt-lbl">También te puede interesar</p>
-      <div id="r-alt-cards"></div>
-    </div>
-    <a href="#" class="btn-wa" id="r-wa" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-      Cotizar este modelo con un asesor
-    </a>
-    <p style="font-size:.68rem;color:var(--soft);text-align:center;margin-top:10px;font-style:italic">
-      * Los resultados son meramente orientativos.
-    </p>
-  </div>
+      <a href="#" class="btn-wa" id="r-wa" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Cotizar este modelo con un asesor
+      </a>
+      <p style="font-size:.68rem;color:var(--soft);text-align:center;margin-top:10px;font-style:italic">
+        * Los resultados son meramente orientativos.
+      </p>
+    </div><!-- /result-wrap -->
 
   </div><!-- /calef-step-2 -->
 
@@ -1039,9 +1113,104 @@ img{display:block;max-width:100%}
   </div>
 
 </div><!-- /panel-termo -->
+
 </div><!-- /page-body -->
 
 <script>
+
+/* ════════════════════════════════════════════════════
+   CALEF — NUEVO FLUJO 3 PASOS
+   Paso 1: Tipos de equipo + pregunta pared
+   Paso 2: Medidas del ambiente
+   Paso 3: Resultado
+   ═══════════════════════════════════════════════════ */
+
+var calefParedChoice = null; /* 'si' | 'no' — set by pared buttons */
+
+/* Called when user clicks SÍ / NO pared buttons */
+function calefSetPared(val){
+  calefParedChoice = val;
+
+  /* Style the chosen button */
+  ['cp-si','cp-no'].forEach(function(id){
+    var btn = document.getElementById(id);
+    if(!btn) return;
+    btn.classList.toggle('selected', btn.dataset.val === val);
+  });
+
+  /* Reveal the "Continuar a Medición" button */
+  var cont = document.getElementById('btn-continuar-medicion');
+  if(cont){
+    cont.style.display  = 'flex';
+    cont.style.opacity  = '0';
+    cont.style.transform= 'translateY(8px)';
+    requestAnimationFrame(function(){
+      cont.style.transition = 'opacity .35s ease, transform .35s ease';
+      cont.style.opacity    = '1';
+      cont.style.transform  = 'translateY(0)';
+    });
+  }
+
+  /* Update pip: mark step 1 as done */
+  var pip1 = document.getElementById('pip-1');
+  if(pip1){ pip1.classList.add('done'); pip1.classList.remove('active'); }
+  var conn1 = document.getElementById('conn-1');
+  if(conn1) conn1.classList.add('done');
+  var pip2 = document.getElementById('pip-2');
+  if(pip2) pip2.classList.add('next');
+
+  /* Error message: clear if any */
+  var err = document.getElementById('err-calef-pared');
+  if(err) err.style.display = 'none';
+}
+
+/* Paso 1 → Paso 2 */
+function calefGoMedicion(){
+  if(!calefParedChoice){
+    var err = document.getElementById('err-calef-pared');
+    if(err){ err.style.display='block'; err.textContent='⚠ Seleccioná SÍ o NO antes de continuar.'; }
+    return;
+  }
+  /* Transition */
+  var step1 = document.getElementById('calef-step-1');
+  var step2 = document.getElementById('calef-step-2');
+  step1.classList.remove('active');
+  step2.classList.add('active');
+
+  /* Pip update */
+  var pip1=document.getElementById('pip-1'),pip2=document.getElementById('pip-2');
+  var conn1=document.getElementById('conn-1'),conn2=document.getElementById('conn-2');
+  if(pip1){pip1.classList.add('done');pip1.classList.remove('active');}
+  if(conn1) conn1.classList.add('done');
+  if(pip2){pip2.classList.add('active');pip2.classList.remove('next');}
+
+  /* Scroll */
+  var panel=document.getElementById('panel-calef');
+  if(panel) panel.scrollIntoView({behavior:'smooth',block:'start'});
+
+  /* Focus largo */
+  setTimeout(function(){
+    var l=document.getElementById('c-largo');
+    if(l) l.focus();
+  },400);
+}
+
+/* Paso 2 → Paso 1 (back) */
+function calefGoBack(){
+  var step1=document.getElementById('calef-step-1');
+  var step2=document.getElementById('calef-step-2');
+  step2.classList.remove('active');
+  step1.classList.add('active');
+
+  var pip1=document.getElementById('pip-1'),pip2=document.getElementById('pip-2');
+  var conn1=document.getElementById('conn-1');
+  if(pip2){pip2.classList.remove('active','done');}
+  if(conn1) conn1.classList.remove('done');
+  if(pip1){pip1.classList.add('active');pip1.classList.remove('done');}
+
+  var panel=document.getElementById('panel-calef');
+  if(panel) panel.scrollIntoView({behavior:'smooth',block:'start'});
+}
 /* ════════════════════════════════════════════════════
    TERMO — GAS HINT + PERSONAS SYNC
    ═══════════════════════════════════════════════════ */
@@ -1066,40 +1235,6 @@ img{display:block;max-width:100%}
 })();
 
 
-/* ════════════════════════════════════════════════════
-   CALEF STEP NAVIGATION
-   ═══════════════════════════════════════════════════ */
-function calefGoStep2(){
-  var largo = parseFloat(document.getElementById('c-largo').value);
-  var ancho = parseFloat(document.getElementById('c-ancho').value);
-  var errEl = document.getElementById('err-calef-step1');
-
-  if(!largo || !ancho || largo <= 0 || ancho <= 0){
-    errEl.style.display = 'block';
-    return;
-  }
-  errEl.style.display = 'none';
-
-  /* Transition: hide step 1, show step 2 */
-  document.getElementById('calef-step-1').classList.remove('active');
-  document.getElementById('calef-step-2').classList.add('active');
-
-  /* Update step indicator */
-  var pip1 = document.getElementById('pip-1');
-  var pip2 = document.getElementById('pip-2');
-  var conn = document.querySelector('.step-connector');
-  pip1.classList.remove('active'); pip1.classList.add('done');
-  pip2.classList.add('active');
-  if(conn) conn.classList.add('done');
-
-  /* Smooth scroll to top of panel */
-  var panel = document.getElementById('panel-calef');
-  if(panel) panel.scrollIntoView({behavior:'smooth', block:'start'});
-
-  /* Also collapse any open result from a previous run */
-  var res = document.getElementById('res-calef');
-  if(res) res.classList.remove('open');
-}
 
 function calefGoStep1(){
   /* Go back to step 1 */
@@ -1442,12 +1577,14 @@ function calcTermo(){
 }
 
 /* Enter shortcut en inputs de calef */
+/* Enter shortcut in measurement inputs */
 ['c-largo','c-ancho'].forEach(function(id){
   var el = document.getElementById(id);
   if(el) el.addEventListener('keydown',function(e){
-    if(e.key==='Enter') calefGoStep2();
+    if(e.key==='Enter') calcCalef();
   });
 });
+
 </script>
 </body>
 </html>
