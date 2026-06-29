@@ -315,16 +315,36 @@
       /* Leer marca cruda y normalizar variantes conocidas de nombre */
       var marcaRaw = g(row, ['Marca', 'marca']);
 
-      /* Diccionario de normalización de nombres de marca.
-         Clave: versión lowercase sin tildes tal como puede venir del Sheet.
-         Valor: nombre canónico que se mostrará en los filtros y tarjetas.  */
+      /* ── Diccionario de normalización de nombres de marca ────────
+         Clave : valor de la celda del Sheet convertido a lowercase+trim
+                 (la segunda línea del lookup hace la conversión).
+         Valor : nombre canónico que aparecerá en filtros y tarjetas.
+
+         · Volcán    — el Sheet puede escribirlo sin tilde ("Volcan"),
+                       con punto o con espacio extra.
+         · Triangular — algunos registros vienen en minúsculas
+                        ("triangular") o mayúsculas ("TRIANGULAR");
+                        todos se agrupan bajo "Triangular".
+         · Orbis y Volcán son marcas DISTINTAS; se listan por
+                        separado, no se fusionan.
+
+         Para agregar variantes futuras: añade una línea más aquí.      */
       var MARCA_NORM = {
-        'volcan' : 'Volcán',
-        'volcan.': 'Volcán',
-        'volcan ': 'Volcán',
+        /* Volcán — variantes sin tilde o con artefactos tipográficos */
+        'volcan'      : 'Volcán',
+        'volcan.'     : 'Volcán',
+        'volcan '     : 'Volcán',
+        'volcán'      : 'Volcán',
+
+        /* Triangular — unifica mayúsculas, minúsculas y mixtas */
+        'triangular'  : 'Triangular',
+
         /* Agrega aquí otras variantes si aparecen en el Sheet */
       };
-      var marcaNorm = MARCA_NORM[marcaRaw.toLowerCase().trim()] || marcaRaw;
+      /* Lookup: primero intenta exacto, luego lowercase, luego valor crudo */
+      var marcaNorm = MARCA_NORM[marcaRaw.trim()]
+                   || MARCA_NORM[marcaRaw.toLowerCase().trim()]
+                   || marcaRaw.trim();
 
       return {
         nombre      : g(row, ['Nombre del Producto', 'Nombre', 'nombre']),
