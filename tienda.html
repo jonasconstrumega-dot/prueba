@@ -474,23 +474,25 @@
     .product-card__price-wrap { margin-top: 4px; }
     .product-card__price { font-size: 14px; font-weight: 700; color: var(--celeste-dk); line-height: 1; }
 
-    /* Botón AGREGAR — verde llamativo */
-    .product-card__btn {
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-      width: 100%; padding: 10px 0; margin-top: 10px;
-      background: var(--verde); color: var(--texto);
-      border: none; border-radius: 24px;
-      font-size: 12.5px; font-weight: 800; letter-spacing: .8px;
-      cursor: pointer; font-family: 'Poppins', sans-serif;
-      box-shadow: 0 2px 10px rgba(4,255,0,.25);
-      transition: background var(--trans), transform .15s, box-shadow var(--trans);
-    }
-    .product-card__btn:hover {
-      background: var(--verde-dk);
-      box-shadow: 0 4px 18px rgba(4,255,0,.38);
-    }
-    .product-card__btn:active { transform: scale(.97); }
-    .product-card__btn svg { width: 15px; height: 15px; stroke: var(--texto); fill: none; stroke-width: 2.2; }
+    /* Botón AGREGAR — verde sólido, alto contraste, texto blanco */
+   .product-card__btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  width: 100%; padding: 11px 0; margin-top: 10px;
+  background: #03e000; color: #ffffff;
+  border: none; border-radius: 24px;
+  font-size: 12.5px; font-weight: 800; letter-spacing: .8px;
+  cursor: pointer; font-family: 'Poppins', sans-serif;
+  box-shadow: 0 3px 12px rgba(3,224,0,.35);
+  transition: background .2s ease, transform .15s ease, box-shadow .2s ease;
+}
+.product-card__btn:hover {
+  background: #02b800;
+  cursor: pointer;
+  box-shadow: 0 5px 18px rgba(2,184,0,.45);
+  transform: translateY(-1px);
+}
+.product-card__btn:active { transform: scale(.97); }
+.product-card__btn svg { width: 15px; height: 15px; stroke: #ffffff; fill: none; stroke-width: 2.4; }
 
     /* ════════════════════════════════════════════════════════════════
        CARRUSEL DE SUGERENCIAS DE SUBCATEGORÍAS (encima del grid)
