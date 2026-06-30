@@ -377,10 +377,13 @@
     .filter-option:hover { background: rgba(101,187,204,.08); }
     .filter-option input[type="checkbox"] { display: none; }
     .filter-option__box {
-      width: 17px; height: 17px; border: 1.8px solid var(--gris-borde);
-      border-radius: 4px; flex-shrink: 0; display: flex; align-items: center; justify-content: center;
-      margin-top: 2px;       /* alinea verticalmente el checkbox con la primera línea del texto */
-      transition: background var(--trans), border-color var(--trans);
+  width: 18px; height: 18px; border: 2px solid #ccc;
+  border-radius: 4px; flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+  margin-top: 2px;
+  cursor: pointer;
+  background: #ffffff;
+  transition: background var(--trans), border-color var(--trans);
+}
     }
     .filter-option input:checked ~ .filter-option__box {
       background: var(--celeste); border-color: var(--celeste);
@@ -865,18 +868,21 @@
     .pmodal__btn--video:hover { background: var(--celeste-dk); }
     .pmodal__btn-icon { font-size: 17px; flex-shrink: 0; }
     .pmodal__add-btn {
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-      width: 100%; padding: 13px 0; margin-top: 14px;
-      background: var(--verde); color: var(--texto);
-      border: none; border-radius: 24px; font-size: 14px; font-weight: 800; letter-spacing: .7px;
-      cursor: pointer; font-family: 'Poppins', sans-serif;
-      box-shadow: 0 3px 12px rgba(4,255,0,.25);
-      transition: background var(--trans), transform .15s;
-    }
-    .pmodal__add-btn:hover { background: var(--verde-dk); }
-    .pmodal__add-btn:active { transform: scale(.98); }
-    .pmodal__add-btn svg { width: 16px; height: 16px; stroke: var(--texto); fill: none; stroke-width: 2; }
-
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  width: 100%; padding: 13px 0; margin-top: 14px;
+  background: #03e000; color: #ffffff;
+  border: none; border-radius: 24px; font-size: 14px; font-weight: 800; letter-spacing: .7px;
+  cursor: pointer; font-family: 'Poppins', sans-serif;
+  box-shadow: 0 3px 12px rgba(3,224,0,.35);
+  transition: background .2s ease, transform .15s ease, box-shadow .2s ease;
+}
+.pmodal__add-btn:hover {
+  background: #02b800;
+  box-shadow: 0 5px 18px rgba(2,184,0,.45);
+  transform: translateY(-1px);
+}
+.pmodal__add-btn:active { transform: scale(.98); }
+.pmodal__add-btn svg { width: 16px; height: 16px; stroke: #ffffff; fill: none; stroke-width: 2.2; }
     /* ════════════════════════════════════════════════════════════════
        FOOTER
     ════════════════════════════════════════════════════════════════ */
