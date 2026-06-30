@@ -2292,7 +2292,9 @@
           '<p class="product-card__name">'     + p.nombre + '</p>' +
           '<div class="product-card__price-wrap">' +
           '<span class="product-card__price">Consultar precio</span></div>' +
-          '<button class="product-card__btn" aria-label="Agregar ' + p.nombre + ' al carrito">' +
+          '<button class="product-card__btn" '+
+          'style="background-color:#03e000!important;color:#ffffff!important;font-weight:800;border:none;cursor:pointer;" '+
+          'aria-label="Agregar ' + p.nombre + ' al carrito">' +
           CART_SVG + ' AGREGAR</button></div></article>';
       }).join('');
 
@@ -2842,9 +2844,13 @@
     const headerCartBtn = document.getElementById('header-cart-btn');
     if (headerCartBtn) headerCartBtn.addEventListener('click', openDrawer);
 
-    document.getElementById('products-grid').addEventListener('click', e => {
-      const btn = e.target.closest('.product-card__btn');
-      if (btn) addFromCard(btn.closest('.product-card'));
+    document.getElementById('products-grid').addEventListener('click', function(e) {
+      /* closest() sube desde cualquier hijo (SVG, path, span) hasta el botón */
+      var agrBtn = e.target.closest('.product-card__btn');
+      if (!agrBtn) return;          /* clic en otra zona de la tarjeta */
+      e.stopPropagation();          /* bloquea que el modal-listener lo capture */
+      var card = agrBtn.closest('.product-card');
+      if (card) addFromCard(card);
     });
 
     /* ════════════════════════════════════════════════════════════════
@@ -3154,7 +3160,8 @@ Quedo a la espera de su respuesta. ¡Gracias!`;
         });
       }
 
-      /* Mostrar */
+      /* Mostrar — fondo blanco forzado inline para blindar contra herencia CSS */
+      box.style.cssText = 'background-color:#ffffff!important;color:#333333!important;';
       overlay.classList.add('pmodal-overlay--open');
       document.body.style.overflow = 'hidden';
       closeBtn.focus();
@@ -3191,7 +3198,8 @@ Quedo a la espera de su respuesta. ¡Gracias!`;
        window._CATALOG_PRODUCTS se llena en initCatalog() antes de renderGrid(). */
     const grid = document.getElementById('products-grid');
     grid.addEventListener('click', function(e) {
-      if (e.target.closest('.product-card__btn')) return;   /* ignorar btn AGREGAR */
+      /* Si el clic fue en el botón AGREGAR (o en su SVG hijo), no abrir modal */
+      if (e.target.closest('.product-card__btn')) return;
 
       const card = e.target.closest('.product-card');
       if (!card) return;
