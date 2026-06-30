@@ -2587,52 +2587,6 @@
     mobileToggle.appendChild(document.createTextNode(isHidden ? 'Filtrar productos' : 'Ocultar filtros'));
   });
 
-  /* ────────────────────────────────────────────────────────────────
-     5. BOTÓN MOSTRAR MÁS — Barra de progreso dinámica
-  ──────────────────────────────────────────────────────────────── */
-  (function () {
-    const btn         = document.getElementById('btn-load-more');
-    const fill        = document.getElementById('progress-fill');
-    const shownLabel  = document.getElementById('shown-count');
-    const total       = 700;
-    const pageSize    = 20;
-    let shown         = 20;
-
-    function setProgress(value) {
-      const pct = Math.min((value / total) * 100, 100);
-      fill.style.width = pct + '%';
-      fill.closest('[role="progressbar"]').setAttribute('aria-valuenow', value);
-    }
-
-    // Inicializar barra en estado correcto
-    setProgress(shown);
-
-    btn.addEventListener('click', () => {
-      if (btn.classList.contains('btn-load-more--loading')) return;
-
-      // Estado de carga
-      btn.classList.add('btn-load-more--loading');
-      btn.querySelector('.btn-load-more__text').textContent = 'Cargando…';
-
-      // Simular carga (800ms)
-      setTimeout(() => {
-        shown = Math.min(shown + pageSize, total);
-        shownLabel.textContent = shown;
-        setProgress(shown);
-
-        btn.classList.remove('btn-load-more--loading');
-        btn.querySelector('.btn-load-more__text').textContent = 'MOSTRAR MÁS';
-
-        // Si ya se cargó todo, ocultar botón
-        if (shown >= total) {
-          btn.textContent = '✓ Todos los productos cargados';
-          btn.disabled = true;
-          btn.style.opacity = '.5';
-          btn.style.cursor = 'default';
-        }
-      }, 800);
-    });
-  })();
 
   /* ────────────────────────────────────────────────────────────────
      7. CART DRAWER + FLUJO DE COTIZACIÓN WHATSAPP
