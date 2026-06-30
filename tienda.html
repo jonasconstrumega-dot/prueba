@@ -809,6 +809,26 @@
        WhatsApp, auto-filtro por URL  →  catalogo.js
   ════════════════════════════════════════════════════════════ -->
   <script src="catalogo.js" defer></script>
+<style>
+  /* Fuerza que el contenedor flotante del detalle del producto tenga fondo blanco real */
+  .product-modal__content, 
+  .modal-content, 
+  .modal-box,
+  [class*="modal"] {
+    background-color: #ffffff !important;
+    color: #333d47 !important;
+    border-radius: 8px !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35) !important;
+    border: 1px solid #e0e6ef !important;
+  }
 
+  /* Asegura un fondo oscuro semitransparente por detrás de la tarjeta emergente */
+  .product-modal-overlay, 
+  .modal-overlay,
+  .modal-backdrop {
+    background-color: rgba(15, 23, 42, 0.6) !important;
+    backdrop-filter: blur(4px) !important;
+  }
+</style>
 </body>
 </html>
