@@ -802,10 +802,11 @@
     }
     .pmodal-overlay--open { background: rgba(10,18,32,.62); pointer-events: all; }
     .pmodal {
-      background: var(--blanco); border-radius: 16px;
+      background: #ffffff; border-radius: 16px;
       box-shadow: 0 24px 64px rgba(0,0,0,.18);
       width: 100%; max-width: 640px; max-height: 90vh; overflow-y: auto;
       display: flex; flex-direction: column;
+      position: relative; z-index: 1101;
       transform: translateY(22px) scale(.97); opacity: 0;
       transition: transform .30s cubic-bezier(.34,1.2,.64,1), opacity .24s;
     }

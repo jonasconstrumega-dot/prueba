@@ -383,21 +383,14 @@
       }
       ulEl.innerHTML = entries.map(function(entry) {
         var val = entry[0], count = entry[1];
-        var isChecked = activeFilters[filterKey].has(val);
-        // Estilos inline de respaldo para garantizar que la casilla SIEMPRE se pinte con borde
-        var boxStyle = 'display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border:2px solid #aab4c2;border-radius:4px;background-color:#fff;margin-right:8px;vertical-align:middle;flex-shrink:0;transition:all 0.2s;';
-        if (isChecked) {
-          boxStyle += 'background-color:#1a2e4a;border-color:#1a2e4a;'; // Fondo azul si está seleccionado
-        }
-
-        return '<li><label class="filter-option" style="display:flex;align-items:center;padding:6px 20px;cursor:pointer;">' +
-          '<input type="checkbox" name="' + filterKey + '" value="' + val + '"' + (isChecked ? ' checked' : '') + ' style="position:absolute;opacity:0;width:0;height:0;">' +
-          '<span class="filter-option__box" style="' + boxStyle + '">' + (isChecked ? CHECK_SVG : '') + '</span>' +
-          '<span class="filter-option__label" style="font-size:13px;color:#333d47;">' + val + '</span>' +
-          '<span class="filter-option__count" style="font-size:12px;color:#aab4c2;margin-left:4px;">(' + count + ')</span>' +
+        return '<li><label class="filter-option">' +
+          '<input type="checkbox" name="' + filterKey + '" value="' + val + '"' +
+          (activeFilters[filterKey].has(val) ? ' checked' : '') + '>' +
+          '<span class="filter-option__box">' + CHECK_SVG + '</span>' +
+          '<span class="filter-option__label">' + val + '</span>' +
+          '<span class="filter-option__count">(' + count + ')</span>' +
           '</label></li>';
       }).join('');
-
       ulEl.querySelectorAll('input[type="checkbox"]').forEach(function(cb) {
         cb.addEventListener('change', function() {
           if (cb.checked) activeFilters[filterKey].add(cb.value);
@@ -500,7 +493,7 @@
           '<p class="product-card__name">'     + p.nombre + '</p>' +
           '<div class="product-card__price-wrap">' +
           '<span class="product-card__price">Consultar precio</span></div>' +
-          '<button class="product-card__btn" aria-label="Agregar ' + p.nombre + ' al carrito">' +
+          '<button class="product-card__btn" '+'style="background:#03e000!important;color:#ffffff!important;border:none;" '+'aria-label="Agregar ' + p.nombre + ' al carrito">' +
           CART_SVG + ' AGREGAR</button></div></article>';
       }).join('');
 
@@ -1050,9 +1043,15 @@
     const headerCartBtn = document.getElementById('header-cart-btn');
     if (headerCartBtn) headerCartBtn.addEventListener('click', openDrawer);
 
-    document.getElementById('products-grid').addEventListener('click', e => {
-      const btn = e.target.closest('.product-card__btn');
-      if (btn) addFromCard(btn.closest('.product-card'));
+    /* Listener delegado en products-grid — captura clic en el botón AGREGAR
+       y también en cualquier hijo del botón (ej. el SVG del ícono del carrito) */
+    document.getElementById('products-grid').addEventListener('click', function(e) {
+      /* Subir desde el target hasta encontrar .product-card__btn */
+      var btn = e.target.closest('.product-card__btn');
+      if (!btn) return;   /* clic en otro lugar de la tarjeta → ignorar */
+      e.stopPropagation();   /* evitar que el listener del modal lo intercepte */
+      var card = btn.closest('.product-card');
+      if (card) addFromCard(card);
     });
 
     /* ════════════════════════════════════════════════════════════════
@@ -1106,9 +1105,6 @@
     /* ════════════════════════════════════════════════════════════════
        ENVÍO: simular DB → generar URL WhatsApp → modal
     ════════════════════════════════════════════════════════════════ */
-/* ════════════════════════════════════════════════════════════════
-       ENVÍO: simular DB → generar URL WhatsApp → modal (CORREGIDO)
-    ════════════════════════════════════════════════════════════════ */
     whatsappBtn.addEventListener('click', () => {
       if (!validateForm()) return;
 
@@ -1120,10 +1116,12 @@
         cargo  : fRole.value,
       };
 
-      /* 2. Capturar datos del carrito (Sin formatear precios para evitar errores) */
+      /* 2. Capturar datos del carrito */
       const productLines = cartItems.map(i =>
-        `• ${i.brand} – ${i.name} (Cantidad: ${i.qty})`
+        `• ${i.brand} – ${i.name} (Cant: ${i.qty}, Precio unit: ${formatPrice(i.price)})`
       ).join('\n');
+
+      const totalAmount = cartItems.reduce((a, i) => a + i.price * i.qty, 0);
 
       /* ── Simulación de guardado en base de datos ── */
       const dbRecord = {
@@ -1132,21 +1130,27 @@
         productos : cartItems.map(i => ({
           marca    : i.brand,
           nombre   : i.name,
-          cantidad : i.qty
-        }))
+          cantidad : i.qty,
+          precio   : i.price,
+          subtotal : i.price * i.qty,
+        })),
+        total     : totalAmount,
       };
 
       console.log('%c✅ Datos guardados con éxito en la Base de Datos', 'color:#22c55e;font-weight:bold;font-size:14px');
       console.table(dbRecord.cliente);
-      console.log('Productos para cotizar:', dbRecord.productos);
+      console.log('Productos:', dbRecord.productos);
+      console.log('Total:', formatPrice(totalAmount));
 
-      /* 3. Construir mensaje WhatsApp (Limpio de precios manuales) */
+      /* 3. Construir mensaje WhatsApp */
       const waMessage =
 `Hola, mi nombre es *${clientData.nombre}*, soy *${clientData.cargo}*.
 
 Me gustaría cotizar los siguientes productos:
 
 ${productLines}
+
+*Total estimado:* ${formatPrice(totalAmount)}
 
 📧 Correo: ${clientData.email}
 📱 Celular: ${clientData.celular}
@@ -1160,9 +1164,7 @@ Quedo a la espera de su respuesta. ¡Gracias!`;
         Tu solicitud fue registrada.<br>
         <strong>${clientData.nombre}</strong>, serás redirigido a WhatsApp para completar la cotización.`;
       saveOverlay.classList.add('save-modal-overlay--show');
-      
-      // Control de existencia del foco para evitar caídas de UI
-      if (saveConfirm) saveConfirm.focus();
+      saveConfirm.focus();
     });
 
     /* Al confirmar en el modal → abrir WhatsApp */
@@ -1359,7 +1361,9 @@ Quedo a la espera de su respuesta. ¡Gracias!`;
         });
       }
 
-      /* Mostrar */
+      /* Mostrar — forzar fondo blanco sólido por si var(--blanco) no resuelve */
+      const modalBox = document.getElementById('pmodal-box');
+      if (modalBox) { modalBox.style.background = '#ffffff'; modalBox.style.position = 'relative'; modalBox.style.zIndex = '1101'; }
       overlay.classList.add('pmodal-overlay--open');
       document.body.style.overflow = 'hidden';
       closeBtn.focus();
